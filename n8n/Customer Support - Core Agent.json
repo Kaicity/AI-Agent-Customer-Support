@@ -1,0 +1,1265 @@
+{
+  "name": "Customer Support - Core Agent",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "support-intake",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "b9d23749-c5e1-4a36-8a68-23896305a7ef",
+      "name": "Webhook - Tiếp nhận yêu cầu",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1,
+      "position": [
+        -1968,
+        128
+      ],
+      "webhookId": "33d339d6-9122-4a7d-adb9-03a6f12ea3e9"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "=https://ytlbremyuoltcdliynnc.supabase.co/rest/v1/requests",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "apikey",
+              "value": "=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inl0bGJyZW15dW9sdGNkbGl5bm5jIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc4NDk3Mzg0NiwiZXhwIjoyMTAwNTQ5ODQ2fQ.phFt6d5ln98GBUNisiVK4Zy8MSf-7_nnCI9bJ0JIXGs"
+            },
+            {
+              "name": "Prefer",
+              "value": "return=representation"
+            },
+            {
+              "name": "Authorization",
+              "value": "Bearer  eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inl0bGJyZW15dW9sdGNkbGl5bm5jIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc4NDk3Mzg0NiwiZXhwIjoyMTAwNTQ5ODQ2fQ.phFt6d5ln98GBUNisiVK4Zy8MSf-7_nnCI9bJ0JIXGs"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify({ channel: $json.channel, sender_identifier: $json.sender_identifier, sender_name: $json.sender_name, content: $json.content, attachments: $json.attachments, raw_payload: $json }) }}",
+        "options": {}
+      },
+      "id": "6c4e392a-90f4-4eca-b6db-87e4561170f2",
+      "name": "Supabase - Insert Request",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -1184,
+        128
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "=https://ytlbremyuoltcdliynnc.supabase.co/rest/v1/tickets",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "apikey",
+              "value": "=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inl0bGJyZW15dW9sdGNkbGl5bm5jIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc4NDk3Mzg0NiwiZXhwIjoyMTAwNTQ5ODQ2fQ.phFt6d5ln98GBUNisiVK4Zy8MSf-7_nnCI9bJ0JIXGs"
+            },
+            {
+              "name": "Prefer",
+              "value": "return=representation"
+            },
+            {
+              "name": "Authorization",
+              "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inl0bGJyZW15dW9sdGNkbGl5bm5jIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc4NDk3Mzg0NiwiZXhwIjoyMTAwNTQ5ODQ2fQ.phFt6d5ln98GBUNisiVK4Zy8MSf-7_nnCI9bJ0JIXGs"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify({ channel: $('Merge').item.json.channel, sender_identifier: $('Merge').item.json.sender_identifier, sender_name: $('Merge').item.json.sender_name, status: 'new' }) }}",
+        "options": {}
+      },
+      "id": "3d28102a-235e-4f26-b1e8-6bce7aceca4c",
+      "name": "Supabase - Create Ticket",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -1024,
+        128
+      ]
+    },
+    {
+      "parameters": {
+        "method": "PATCH",
+        "url": "=https://ytlbremyuoltcdliynnc.supabase.co/rest/v1/tickets?id=eq.{{ $('Supabase - Create Ticket').item.json.id }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "apikey",
+              "value": "=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inl0bGJyZW15dW9sdGNkbGl5bm5jIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc4NDk3Mzg0NiwiZXhwIjoyMTAwNTQ5ODQ2fQ.phFt6d5ln98GBUNisiVK4Zy8MSf-7_nnCI9bJ0JIXGs"
+            },
+            {
+              "name": "Prefer",
+              "value": "return=representation"
+            },
+            {
+              "name": "Authorization",
+              "value": "Bearer  eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inl0bGJyZW15dW9sdGNkbGl5bm5jIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc4NDk3Mzg0NiwiZXhwIjoyMTAwNTQ5ODQ2fQ.phFt6d5ln98GBUNisiVK4Zy8MSf-7_nnCI9bJ0JIXGs"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify({ category: $json.category, priority: $json.priority }) }}",
+        "options": {}
+      },
+      "id": "30ac74f4-1391-4e3f-862b-bfa5a8bc3364",
+      "name": "Supabase - Update Ticket (Phân loại)",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -400,
+        128
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "leftValue": "={{ $('Parse kết quả').item.json.is_spam }}",
+              "rightValue": true,
+              "operator": {
+                "type": "boolean",
+                "operation": "true"
+              },
+              "id": "ee4fc815-221a-41ed-a54d-a57227ee8c9f"
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "963dc12f-4739-4f63-81d5-d54b06d47566",
+      "name": "IF - Là Spam?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        -224,
+        128
+      ]
+    },
+    {
+      "parameters": {
+        "method": "PATCH",
+        "url": "=https://ytlbremyuoltcdliynnc.supabase.co/rest/v1/tickets?id=eq.{{ $('Supabase - Create Ticket').item.json.id }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "apikey",
+              "value": "=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inl0bGJyZW15dW9sdGNkbGl5bm5jIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc4NDk3Mzg0NiwiZXhwIjoyMTAwNTQ5ODQ2fQ.phFt6d5ln98GBUNisiVK4Zy8MSf-7_nnCI9bJ0JIXGs"
+            },
+            {
+              "name": "Authorization",
+              "value": "Bearer  eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inl0bGJyZW15dW9sdGNkbGl5bm5jIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc4NDk3Mzg0NiwiZXhwIjoyMTAwNTQ5ODQ2fQ.phFt6d5ln98GBUNisiVK4Zy8MSf-7_nnCI9bJ0JIXGs"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify({ status: 'closed_spam', resolution_type: 'auto', resolved_at: new Date().toISOString() }) }}",
+        "options": {}
+      },
+      "id": "af90ad89-610e-4764-8c58-420fb582afd1",
+      "name": "Supabase - Đóng vé Spam",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        0,
+        -48
+      ]
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ JSON.stringify({ status: 'closed_spam' }) }}",
+        "options": {}
+      },
+      "id": "2bbd7eca-6025-4f20-bdc1-494a1c0dcaa1",
+      "name": "Respond - Đã lọc Spam",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        224,
+        -48
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "leftValue": "={{ $('Parse kết quả').item.json.is_insufficient_info }}",
+              "rightValue": true,
+              "operator": {
+                "type": "boolean",
+                "operation": "true"
+              },
+              "id": "39a523a9-50e4-4ff0-80c2-34316e12a427"
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "b0537bea-6890-4448-9aec-4d969aee1eab",
+      "name": "IF - Thiếu thông tin?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        0,
+        144
+      ]
+    },
+    {
+      "parameters": {
+        "method": "PATCH",
+        "url": "=https://ytlbremyuoltcdliynnc.supabase.co/rest/v1/tickets?id=eq.{{ $('Supabase - Create Ticket').item.json.id }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "apikey",
+              "value": "=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inl0bGJyZW15dW9sdGNkbGl5bm5jIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc4NDk3Mzg0NiwiZXhwIjoyMTAwNTQ5ODQ2fQ.phFt6d5ln98GBUNisiVK4Zy8MSf-7_nnCI9bJ0JIXGs"
+            },
+            {
+              "name": "Authorization",
+              "value": "Bearer  eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inl0bGJyZW15dW9sdGNkbGl5bm5jIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc4NDk3Mzg0NiwiZXhwIjoyMTAwNTQ5ODQ2fQ.phFt6d5ln98GBUNisiVK4Zy8MSf-7_nnCI9bJ0JIXGs"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify({ status: 'waiting_customer' }) }}",
+        "options": {}
+      },
+      "id": "710a0017-2ff8-44cf-9734-89c2b9c8d86d",
+      "name": "Supabase - Đánh dấu chờ bổ sung",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        224,
+        128
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "=https://ytlbremyuoltcdliynnc.supabase.co/rest/v1/rpc/match_document_chunks",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "apikey",
+              "value": "=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inl0bGJyZW15dW9sdGNkbGl5bm5jIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc4NDk3Mzg0NiwiZXhwIjoyMTAwNTQ5ODQ2fQ.phFt6d5ln98GBUNisiVK4Zy8MSf-7_nnCI9bJ0JIXGs"
+            },
+            {
+              "name": "Authorization",
+              "value": "Bearer  eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inl0bGJyZW15dW9sdGNkbGl5bm5jIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc4NDk3Mzg0NiwiZXhwIjoyMTAwNTQ5ODQ2fQ.phFt6d5ln98GBUNisiVK4Zy8MSf-7_nnCI9bJ0JIXGs"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify({ query_embedding: $json.embedding.values, match_count: 5, similarity_threshold: 0.7 }) }}",
+        "options": {}
+      },
+      "id": "3c2f2f1f-4cc8-4f51-bb24-4d2156092a24",
+      "name": "Supabase - Truy xuất tài liệu (RAG)",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        448,
+        352
+      ],
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "jsCode": "const chunks = $input.all();\n\nconst context = chunks\n  .map(item => item.json.chunk_text)\n  .filter(Boolean)\n  .join('\\n---\\n');\n\nreturn [{\n  json: {\n    context,\n    has_context: chunks.length > 0\n  }\n}];"
+      },
+      "id": "4a681a87-fa32-4069-bad0-5f75e9a9d2ba",
+      "name": "Ghép Context",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        656,
+        352
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "const out = $input.first().json.output;\nconst parsed = out && typeof out === 'object' ? out : { answer: '', confidence: 0, can_auto_send: false };\nreturn [{ json: parsed }];"
+      },
+      "id": "9f33858b-3b5e-4104-8ab6-4fad44f28b46",
+      "name": "Parse Kết quả Trả lời",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1136,
+        352
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "leftValue": "={{ true }}",
+              "rightValue": true,
+              "operator": {
+                "type": "boolean",
+                "operation": "true"
+              },
+              "id": "f0c86632-b31c-4f41-80da-0ccf31eeb900"
+            },
+            {
+              "leftValue": "={{ 0.95 }}",
+              "rightValue": 0.75,
+              "operator": {
+                "type": "number",
+                "operation": "gte"
+              },
+              "id": "2fa958cf-f85f-4950-ae6f-acdf751c3288"
+            },
+            {
+              "leftValue": "={{ $('Parse kết quả').item.json.category }}",
+              "rightValue": "inquiry",
+              "operator": {
+                "type": "string",
+                "operation": "notEquals"
+              },
+              "id": "a93b914e-8808-4b57-9efe-a1eb1cdc04a9"
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "fc48d16b-e889-45aa-b575-2709a8c3df0d",
+      "name": "IF - Đủ tin cậy để tự trả lời?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        1328,
+        352
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "=https://ytlbremyuoltcdliynnc.supabase.co/rest/v1/messages",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "apikey",
+              "value": "=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inl0bGJyZW15dW9sdGNkbGl5bm5jIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc4NDk3Mzg0NiwiZXhwIjoyMTAwNTQ5ODQ2fQ.phFt6d5ln98GBUNisiVK4Zy8MSf-7_nnCI9bJ0JIXGs"
+            },
+            {
+              "name": "Authorization",
+              "value": "Bearer  eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inl0bGJyZW15dW9sdGNkbGl5bm5jIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc4NDk3Mzg0NiwiZXhwIjoyMTAwNTQ5ODQ2fQ.phFt6d5ln98GBUNisiVK4Zy8MSf-7_nnCI9bJ0JIXGs"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify({ ticket_id: $('Supabase - Create Ticket').item.json.id, direction: 'outbound_auto', content: $json.answer, sent_by: 'agent_ai' }) }}",
+        "options": {}
+      },
+      "id": "63d5182f-8484-4dec-8ba7-a03995300f39",
+      "name": "Supabase - Lưu message tự động",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1552,
+        224
+      ]
+    },
+    {
+      "parameters": {
+        "method": "PATCH",
+        "url": "=https://ytlbremyuoltcdliynnc.supabase.co/rest/v1/tickets?id=eq.{{ $('Supabase - Create Ticket').item.json.id }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "apikey",
+              "value": "=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inl0bGJyZW15dW9sdGNkbGl5bm5jIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc4NDk3Mzg0NiwiZXhwIjoyMTAwNTQ5ODQ2fQ.phFt6d5ln98GBUNisiVK4Zy8MSf-7_nnCI9bJ0JIXGs"
+            },
+            {
+              "name": "Authorization",
+              "value": "Bearer  eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inl0bGJyZW15dW9sdGNkbGl5bm5jIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc4NDk3Mzg0NiwiZXhwIjoyMTAwNTQ5ODQ2fQ.phFt6d5ln98GBUNisiVK4Zy8MSf-7_nnCI9bJ0JIXGs"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify({ status: 'resolved_auto', resolution_type: 'auto', confidence_score: $('Parse Kết quả Trả lời').item.json.confidence, resolved_at: new Date().toISOString() }) }}",
+        "options": {}
+      },
+      "id": "c76de5ec-6942-4e35-b07b-fa813ef7533b",
+      "name": "Supabase - Update Ticket (Resolved Auto)",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1760,
+        224
+      ]
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ JSON.stringify({ status: 'resolved_auto', answer: $('Parse Kết quả Trả lời').item.json.answer }) }}",
+        "options": {}
+      },
+      "id": "f15c6b56-4625-4fee-9796-d7d055d7cf70",
+      "name": "Respond - Trả lời tự động",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        2240,
+        224
+      ]
+    },
+    {
+      "parameters": {
+        "method": "PATCH",
+        "url": "=https://ytlbremyuoltcdliynnc.supabase.co/rest/v1/tickets?id=eq.{{ $('Supabase - Create Ticket').item.json.id }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "apikey",
+              "value": "=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inl0bGJyZW15dW9sdGNkbGl5bm5jIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc4NDk3Mzg0NiwiZXhwIjoyMTAwNTQ5ODQ2fQ.phFt6d5ln98GBUNisiVK4Zy8MSf-7_nnCI9bJ0JIXGs"
+            },
+            {
+              "name": "Authorization",
+              "value": "Bearer  eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inl0bGJyZW15dW9sdGNkbGl5bm5jIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc4NDk3Mzg0NiwiZXhwIjoyMTAwNTQ5ODQ2fQ.phFt6d5ln98GBUNisiVK4Zy8MSf-7_nnCI9bJ0JIXGs"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{\nJSON.stringify({\n  status: 'escalated',\n  resolution_type: 'human',\n  confidence_score: $('Parse Kết quả Trả lời').item.json.confidence,\n  ai_summary:\n    'Danh muc: ' + $('Parse kết quả').item.json.category +\n    '. Ly do: ' + $('Parse kết quả').item.json.reason +\n    '. De xuat AI (chua gui): ' + $json.answer,\n  assigned_team: $('Parse kết quả').item.json.category\n})\n}}",
+        "options": {}
+      },
+      "id": "704604ec-ed6a-4138-9e63-402cdddeaaff",
+      "name": "Supabase - Update Ticket (Escalate)",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1552,
+        464
+      ]
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ JSON.stringify({ status: 'escalated', message: 'Yêu cầu của bạn đã được ghi nhận và chuyển cho nhân sự phụ trách. Chúng tôi sẽ phản hồi sớm nhất.' }) }}",
+        "options": {}
+      },
+      "id": "c3e5d100-a260-4f1e-b8bc-eacc9f6b38bb",
+      "name": "Respond - Đã chuyển nhân sự",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        1792,
+        464
+      ]
+    },
+    {
+      "parameters": {
+        "model": "gpt-4.1",
+        "options": {}
+      },
+      "id": "8b8378dd-8ae5-4b9c-95e7-068fba6e110b",
+      "name": "OpenAI Chat Model - Phân loại",
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1,
+      "position": [
+        -928,
+        336
+      ],
+      "credentials": {
+        "openAiApi": {
+          "id": null,
+          "name": "",
+          "__aiGatewayManaged": true
+        }
+      }
+    },
+    {
+      "parameters": {
+        "schemaType": "manual",
+        "inputSchema": "{\n  \"type\": \"object\",\n  \"properties\": {\n    \"category\": { \"type\": \"string\", \"enum\": [\"inquiry\",\"complaint\",\"technical\",\"payment\",\"urgent\",\"spam\",\"insufficient_info\"] },\n    \"priority\": { \"type\": \"number\" },\n    \"is_spam\": { \"type\": \"boolean\" },\n    \"is_insufficient_info\": { \"type\": \"boolean\" },\n    \"reason\": { \"type\": \"string\" }\n  },\n  \"required\": [\"category\",\"priority\",\"is_spam\",\"is_insufficient_info\",\"reason\"]\n}"
+      },
+      "id": "2d3dd3b8-4211-4b0a-bd61-35d77cf5b4a6",
+      "name": "Structured Output - Phân loại",
+      "type": "@n8n/n8n-nodes-langchain.outputParserStructured",
+      "typeVersion": 1.2,
+      "position": [
+        -704,
+        336
+      ]
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $('Merge').item.json.content }}",
+        "hasOutputParser": true,
+        "options": {
+          "systemMessage": "Ban la bo phan loai yeu cau cho tong dai ho tro khach hang. Phan loai noi dung sau vao 1 trong cac nhom: inquiry, complaint, technical, payment, urgent, spam, insufficient_info. Danh gia them: priority (1=khan cap nhat den 5=thap nhat), is_spam (bool), is_insufficient_info (bool), reason (giai thich ngan). CHI tra ve JSON thuan, khong markdown, khong giai thich them, dung dinh dang: {\"category\":\"...\",\"priority\":1,\"is_spam\":false,\"is_insufficient_info\":false,\"reason\":\"...\"}"
+        }
+      },
+      "id": "310f23ed-0b0c-4290-b78a-f32795008489",
+      "name": "AI Agent - Phân loại & Ưu tiên",
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 1.9,
+      "position": [
+        -864,
+        128
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://generativelanguage.googleapis.com/v1beta/models/gemini-embedding-001:embedContent",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "key",
+              "value": "AIzaSyC_4DwgEuvQ7s0pzd-IzlMw-ISgo11S9gw"
+            }
+          ]
+        },
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"model\": \"models/gemini-embedding-001\",\n  \"content\": {\n    \"parts\": [\n      {\n        \"text\": \"{{ $('Merge').item.json.content }}\"\n      }\n    ]\n  },\n  \"outputDimensionality\": 1536\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "position": [
+        240,
+        352
+      ],
+      "id": "15e8c3ba-f7e9-451b-895a-5ef3b0064d29",
+      "name": "Embedding Google"
+    },
+    {
+      "parameters": {
+        "jsCode": "const out = $input.first().json.output\nconst parsed = out && typeof out === 'object' ? out : { category: 'insufficient_info', priority: 3, is_spam: false, is_insufficient_info: true, reason: 'parse_error' };\nreturn [{ json: parsed }];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -576,
+        128
+      ],
+      "id": "fb516f1d-8d36-48a9-a7e6-4be78a46c8c4",
+      "name": "Parse kết quả"
+    },
+    {
+      "parameters": {
+        "model": "gpt-4.1",
+        "options": {}
+      },
+      "id": "492ec0b9-4d4b-451b-86ca-6408f34ab162",
+      "name": "OpenAI Chat Model - Trả lời",
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1,
+      "position": [
+        768,
+        576
+      ],
+      "credentials": {
+        "openAiApi": {
+          "id": null,
+          "name": "",
+          "__aiGatewayManaged": true
+        }
+      }
+    },
+    {
+      "parameters": {
+        "schemaType": "manual",
+        "inputSchema": "{\n  \"type\": \"object\",\n  \"properties\": {\n    \"answer\": { \"type\": \"string\" },\n    \"confidence\": { \"type\": \"number\" },\n    \"can_auto_send\": { \"type\": \"boolean\" }\n  },\n  \"required\": [\"answer\",\"confidence\",\"can_auto_send\"]\n}"
+      },
+      "id": "5aa3893e-c7d9-4a6c-891c-1a4a12143fd8",
+      "name": "Structured Output - Trả lời1",
+      "type": "@n8n/n8n-nodes-langchain.outputParserStructured",
+      "typeVersion": 1.2,
+      "position": [
+        976,
+        576
+      ]
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ `CONTEXT:\\n${$json.context}\\n\\nCAU HOI KHACH HANG:\\n${$('Merge').item.json.content}` }}",
+        "hasOutputParser": true,
+        "options": {
+          "systemMessage": "=Ban la tro ly cham soc khach hang. CHI duoc su dung thong tin trong phan CONTEXT duoi day de tra loi. Neu CONTEXT khong du de tra loi chinh xac, hay dat can_auto_send = false va confidence thap. Tra loi bang tieng Viet, giong lich su, ngan gon, ro rang. CHI tra ve JSON thuan dung dinh dang: {\"answer\":\"...\",\"confidence\":0.0,\"can_auto_send\":false}"
+        }
+      },
+      "id": "f37617cf-adea-4141-9db9-36bccdb6aefb",
+      "name": "AI Agent - Sinh câu trả lời (RAG)1",
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 1.9,
+      "position": [
+        816,
+        352
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://bot-api.zaloplatforms.com/bot4602954381826973562:ZmaEgVkNWIFHuVgEBTlOBSkewsCyrHKilkcRzNALuaYcLDppfJTDtYOuRGVyGmbq/sendMessage",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "chat_id",
+              "value": "={{ $('Merge').item.json.sender_identifier }}"
+            },
+            {
+              "name": "text",
+              "value": "=Yêu cầu của bạn cần thêm thông tin. Vui lòng cung cấp chi tiết hơn (VD: mã đơn hàng, ảnh chụp lỗi, thời điểm xảy ra) để chúng tôi hỗ trợ nhanh nhất."
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "position": [
+        432,
+        128
+      ],
+      "id": "427caf43-b670-49ff-9747-9ac4b04e1b76",
+      "name": "Send Response Zalo"
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.body.sender_identifier}}",
+                    "rightValue": "",
+                    "operator": {
+                      "type": "string",
+                      "operation": "exists",
+                      "singleValue": true
+                    },
+                    "id": "249ec985-7482-4ec2-b5fa-3cf9aa6624da"
+                  }
+                ],
+                "combinator": "and"
+              }
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "id": "515d99c2-3e94-4ddc-873b-4b8ea3019798",
+                    "leftValue": "={{ $json.body.message.from.id }}",
+                    "rightValue": "",
+                    "operator": {
+                      "type": "string",
+                      "operation": "exists",
+                      "singleValue": true
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.4,
+      "position": [
+        -1760,
+        128
+      ],
+      "id": "d07b53a4-d05f-4228-b0b5-f500c2ad2089",
+      "name": "Switch"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "name": "channel",
+              "type": "string",
+              "value": "=website",
+              "id": "651c8635-51ad-48cb-95f4-0f1af49543ee"
+            },
+            {
+              "name": "sender_identifier",
+              "type": "string",
+              "value": "={{ $json.body.sender_identifier || '' }}",
+              "id": "16d2d46b-7956-4617-ab9e-81e6a9162772"
+            },
+            {
+              "name": "sender_name",
+              "type": "string",
+              "value": "={{ $json.body.sender_name || '' }}",
+              "id": "970810f9-bbec-441a-8f06-2d9c1d98048c"
+            },
+            {
+              "name": "content",
+              "type": "string",
+              "value": "={{ $json.body.content || '' }}",
+              "id": "67ac563f-7093-462c-a3c3-c6153daefdde"
+            },
+            {
+              "name": "attachments",
+              "type": "array",
+              "value": "={{ $json.body.attachments || [] }}",
+              "id": "61d41e49-17ac-4f68-9bd0-04bfaf961f60"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "537d5943-b677-4b57-8861-2367a74b556a",
+      "name": "Chuẩn hóa Input cho website",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -1552,
+        -16
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "name": "channel",
+              "type": "string",
+              "value": "=chat_app",
+              "id": "651c8635-51ad-48cb-95f4-0f1af49543ee"
+            },
+            {
+              "name": "sender_identifier",
+              "type": "string",
+              "value": "={{ $json.body.message.from.id }}",
+              "id": "16d2d46b-7956-4617-ab9e-81e6a9162772"
+            },
+            {
+              "name": "sender_name",
+              "type": "string",
+              "value": "={{ $json.body.message.from.display_name || '' }}",
+              "id": "970810f9-bbec-441a-8f06-2d9c1d98048c"
+            },
+            {
+              "name": "content",
+              "type": "string",
+              "value": "={{ $json.body.message.text || '' }}",
+              "id": "67ac563f-7093-462c-a3c3-c6153daefdde"
+            },
+            {
+              "name": "attachments",
+              "type": "array",
+              "value": "={{ $json.body.attachments || [] }}",
+              "id": "61d41e49-17ac-4f68-9bd0-04bfaf961f60"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "c882e27a-28ea-4ede-9ae4-45ce8e292b0d",
+      "name": "Chuẩn hóa Input cho chat app",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -1552,
+        272
+      ]
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3.2,
+      "position": [
+        -1344,
+        128
+      ],
+      "id": "dc24bcbb-4885-4800-836d-52af0f831463",
+      "name": "Merge"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://bot-api.zaloplatforms.com/bot4602954381826973562:ZmaEgVkNWIFHuVgEBTlOBSkewsCyrHKilkcRzNALuaYcLDppfJTDtYOuRGVyGmbq/sendMessage",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "chat_id",
+              "value": "={{ $('Merge').item.json.sender_identifier }}"
+            },
+            {
+              "name": "text",
+              "value": "={{ $('Parse Kết quả Trả lời').item.json.answer }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "position": [
+        2000,
+        224
+      ],
+      "id": "74057d06-8cc1-4b37-bb6b-caaa23f0f212",
+      "name": "Send Response Zalo1"
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ JSON.stringify({ status: 'waiting_customer', message: 'Yêu cầu của bạn cần thêm thông tin. Vui lòng cung cấp chi tiết hơn (VD: mã đơn hàng, ảnh chụp lỗi, thời điểm xảy ra) để chúng tôi hỗ trợ nhanh nhất.' }) }}",
+        "options": {}
+      },
+      "id": "46a8ea95-d44f-4067-a78b-57a8630ea9e0",
+      "name": "Respond - Yêu cầu bổ sung thông tin",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        656,
+        128
+      ]
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Webhook - Tiếp nhận yêu cầu": {
+      "main": [
+        [
+          {
+            "node": "Switch",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Supabase - Insert Request": {
+      "main": [
+        [
+          {
+            "node": "Supabase - Create Ticket",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Supabase - Create Ticket": {
+      "main": [
+        [
+          {
+            "node": "AI Agent - Phân loại & Ưu tiên",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Supabase - Update Ticket (Phân loại)": {
+      "main": [
+        [
+          {
+            "node": "IF - Là Spam?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "IF - Là Spam?": {
+      "main": [
+        [
+          {
+            "node": "Supabase - Đóng vé Spam",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "IF - Thiếu thông tin?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Supabase - Đóng vé Spam": {
+      "main": [
+        [
+          {
+            "node": "Respond - Đã lọc Spam",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "IF - Thiếu thông tin?": {
+      "main": [
+        [
+          {
+            "node": "Supabase - Đánh dấu chờ bổ sung",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Embedding Google",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Supabase - Đánh dấu chờ bổ sung": {
+      "main": [
+        [
+          {
+            "node": "Send Response Zalo",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Supabase - Truy xuất tài liệu (RAG)": {
+      "main": [
+        [
+          {
+            "node": "Ghép Context",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Ghép Context": {
+      "main": [
+        [
+          {
+            "node": "AI Agent - Sinh câu trả lời (RAG)1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Parse Kết quả Trả lời": {
+      "main": [
+        [
+          {
+            "node": "IF - Đủ tin cậy để tự trả lời?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "IF - Đủ tin cậy để tự trả lời?": {
+      "main": [
+        [
+          {
+            "node": "Supabase - Lưu message tự động",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Supabase - Update Ticket (Escalate)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Supabase - Lưu message tự động": {
+      "main": [
+        [
+          {
+            "node": "Supabase - Update Ticket (Resolved Auto)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Supabase - Update Ticket (Resolved Auto)": {
+      "main": [
+        [
+          {
+            "node": "Send Response Zalo1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Supabase - Update Ticket (Escalate)": {
+      "main": [
+        [
+          {
+            "node": "Respond - Đã chuyển nhân sự",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model - Phân loại": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent - Phân loại & Ưu tiên",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Structured Output - Phân loại": {
+      "ai_outputParser": [
+        [
+          {
+            "node": "AI Agent - Phân loại & Ưu tiên",
+            "type": "ai_outputParser",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent - Phân loại & Ưu tiên": {
+      "main": [
+        [
+          {
+            "node": "Parse kết quả",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Embedding Google": {
+      "main": [
+        [
+          {
+            "node": "Supabase - Truy xuất tài liệu (RAG)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Parse kết quả": {
+      "main": [
+        [
+          {
+            "node": "Supabase - Update Ticket (Phân loại)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model - Trả lời": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent - Sinh câu trả lời (RAG)1",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Structured Output - Trả lời1": {
+      "ai_outputParser": [
+        [
+          {
+            "node": "AI Agent - Sinh câu trả lời (RAG)1",
+            "type": "ai_outputParser",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent - Sinh câu trả lời (RAG)1": {
+      "main": [
+        [
+          {
+            "node": "Parse Kết quả Trả lời",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch": {
+      "main": [
+        [
+          {
+            "node": "Chuẩn hóa Input cho website",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Chuẩn hóa Input cho chat app",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Chuẩn hóa Input cho website": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Chuẩn hóa Input cho chat app": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Merge": {
+      "main": [
+        [
+          {
+            "node": "Supabase - Insert Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Send Response Zalo1": {
+      "main": [
+        [
+          {
+            "node": "Respond - Trả lời tự động",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Respond - Yêu cầu bổ sung thông tin": {
+      "main": [
+        []
+      ]
+    },
+    "Send Response Zalo": {
+      "main": [
+        [
+          {
+            "node": "Respond - Yêu cầu bổ sung thông tin",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate",
+    "availableInMCP": false
+  },
+  "versionId": "54e1c55a-2cbc-4fe0-abff-83dcea10f091",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "3bcd7fd6b33c3f14aebe749ee4e92a2d5cf7366afb7ca3ff80c2b91173fc7a7c"
+  },
+  "nodeGroups": [],
+  "id": "CSQkDPVtpAffmohE",
+  "tags": []
+}
