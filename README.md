@@ -1,4 +1,4 @@
-# Tổng đài Hỗ trợ Tự vận hành
+# RAG Customer Support Automation
 
 Hệ thống chăm sóc khách hàng đa kênh: tiếp nhận → phân loại → tự trả lời (RAG) hoặc
 chuyển nhân sự → giám sát chất lượng qua dashboard.
