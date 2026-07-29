@@ -16,7 +16,11 @@ import {
 const CATEGORY_COLOR = "#1D9E75";
 const RESOLUTION_COLORS = ["#1D9E75", "#D85A30", "#B4B2A9"];
 
-export function CategoryVolumeChart({ data }: { data: { name: string; count: number }[] }) {
+export function CategoryVolumeChart({
+  data,
+}: {
+  data: { name: string; count: number }[];
+}) {
   return (
     <ResponsiveContainer width="100%" height={260}>
       <BarChart data={data} margin={{ top: 8, right: 8, left: 0, bottom: 8 }}>
@@ -29,13 +33,27 @@ export function CategoryVolumeChart({ data }: { data: { name: string; count: num
   );
 }
 
-export function ResolutionSplitChart({ data }: { data: { name: string; value: number }[] }) {
+export function ResolutionSplitChart({
+  data,
+}: {
+  data: { name: string; value: number }[];
+}) {
   return (
     <ResponsiveContainer width="100%" height={260}>
       <PieChart>
-        <Pie data={data} dataKey="value" nameKey="name" innerRadius={55} outerRadius={90} paddingAngle={2}>
+        <Pie
+          data={data}
+          dataKey="value"
+          nameKey="name"
+          innerRadius={55}
+          outerRadius={90}
+          paddingAngle={2}
+        >
           {data.map((_, i) => (
-            <Cell key={i} fill={RESOLUTION_COLORS[i % RESOLUTION_COLORS.length]} />
+            <Cell
+              key={i}
+              fill={RESOLUTION_COLORS[i % RESOLUTION_COLORS.length]}
+            />
           ))}
         </Pie>
         <Legend />

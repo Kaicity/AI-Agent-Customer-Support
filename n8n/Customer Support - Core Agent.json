@@ -21,13 +21,13 @@
     {
       "parameters": {
         "method": "POST",
-        "url": "=https://ytlbremyuoltcdliynnc.supabase.co/rest/v1/requests",
+        "url": "=https://ufhjblocneiptswojvac.supabase.co/rest/v1/requests",
         "sendHeaders": true,
         "headerParameters": {
           "parameters": [
             {
               "name": "apikey",
-              "value": "=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inl0bGJyZW15dW9sdGNkbGl5bm5jIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc4NDk3Mzg0NiwiZXhwIjoyMTAwNTQ5ODQ2fQ.phFt6d5ln98GBUNisiVK4Zy8MSf-7_nnCI9bJ0JIXGs"
+              "value": "=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVmaGpibG9jbmVpcHRzd29qdmFjIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc4NTMwNDAzNywiZXhwIjoyMTAwODgwMDM3fQ.Q2cwZ7beqdZZCHgeESeGp0OGgodzi2mQJuQdKePPsQM"
             },
             {
               "name": "Prefer",
@@ -35,7 +35,7 @@
             },
             {
               "name": "Authorization",
-              "value": "Bearer  eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inl0bGJyZW15dW9sdGNkbGl5bm5jIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc4NDk3Mzg0NiwiZXhwIjoyMTAwNTQ5ODQ2fQ.phFt6d5ln98GBUNisiVK4Zy8MSf-7_nnCI9bJ0JIXGs"
+              "value": "Bearer  eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVmaGpibG9jbmVpcHRzd29qdmFjIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc4NTMwNDAzNywiZXhwIjoyMTAwODgwMDM3fQ.Q2cwZ7beqdZZCHgeESeGp0OGgodzi2mQJuQdKePPsQM"
             }
           ]
         },
@@ -56,13 +56,13 @@
     {
       "parameters": {
         "method": "POST",
-        "url": "=https://ytlbremyuoltcdliynnc.supabase.co/rest/v1/tickets",
+        "url": "=https://ufhjblocneiptswojvac.supabase.co/rest/v1/tickets",
         "sendHeaders": true,
         "headerParameters": {
           "parameters": [
             {
               "name": "apikey",
-              "value": "=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inl0bGJyZW15dW9sdGNkbGl5bm5jIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc4NDk3Mzg0NiwiZXhwIjoyMTAwNTQ5ODQ2fQ.phFt6d5ln98GBUNisiVK4Zy8MSf-7_nnCI9bJ0JIXGs"
+              "value": "=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVmaGpibG9jbmVpcHRzd29qdmFjIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc4NTMwNDAzNywiZXhwIjoyMTAwODgwMDM3fQ.Q2cwZ7beqdZZCHgeESeGp0OGgodzi2mQJuQdKePPsQM"
             },
             {
               "name": "Prefer",
@@ -70,7 +70,7 @@
             },
             {
               "name": "Authorization",
-              "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inl0bGJyZW15dW9sdGNkbGl5bm5jIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc4NDk3Mzg0NiwiZXhwIjoyMTAwNTQ5ODQ2fQ.phFt6d5ln98GBUNisiVK4Zy8MSf-7_nnCI9bJ0JIXGs"
+              "value": "=Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVmaGpibG9jbmVpcHRzd29qdmFjIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc4NTMwNDAzNywiZXhwIjoyMTAwODgwMDM3fQ.Q2cwZ7beqdZZCHgeESeGp0OGgodzi2mQJuQdKePPsQM"
             }
           ]
         },
@@ -91,13 +91,13 @@
     {
       "parameters": {
         "method": "PATCH",
-        "url": "=https://ytlbremyuoltcdliynnc.supabase.co/rest/v1/tickets?id=eq.{{ $('Supabase - Create Ticket').item.json.id }}",
+        "url": "=https://ufhjblocneiptswojvac.supabase.co/rest/v1/tickets?id=eq.{{ $('Supabase - Create Ticket').item.json.id }}",
         "sendHeaders": true,
         "headerParameters": {
           "parameters": [
             {
               "name": "apikey",
-              "value": "=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inl0bGJyZW15dW9sdGNkbGl5bm5jIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc4NDk3Mzg0NiwiZXhwIjoyMTAwNTQ5ODQ2fQ.phFt6d5ln98GBUNisiVK4Zy8MSf-7_nnCI9bJ0JIXGs"
+              "value": "=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVmaGpibG9jbmVpcHRzd29qdmFjIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc4NTMwNDAzNywiZXhwIjoyMTAwODgwMDM3fQ.Q2cwZ7beqdZZCHgeESeGp0OGgodzi2mQJuQdKePPsQM"
             },
             {
               "name": "Prefer",
@@ -105,7 +105,7 @@
             },
             {
               "name": "Authorization",
-              "value": "Bearer  eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inl0bGJyZW15dW9sdGNkbGl5bm5jIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc4NDk3Mzg0NiwiZXhwIjoyMTAwNTQ5ODQ2fQ.phFt6d5ln98GBUNisiVK4Zy8MSf-7_nnCI9bJ0JIXGs"
+              "value": "Bearer  eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVmaGpibG9jbmVpcHRzd29qdmFjIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc4NTMwNDAzNywiZXhwIjoyMTAwODgwMDM3fQ.Q2cwZ7beqdZZCHgeESeGp0OGgodzi2mQJuQdKePPsQM"
             }
           ]
         },
@@ -159,17 +159,17 @@
     {
       "parameters": {
         "method": "PATCH",
-        "url": "=https://ytlbremyuoltcdliynnc.supabase.co/rest/v1/tickets?id=eq.{{ $('Supabase - Create Ticket').item.json.id }}",
+        "url": "=https://ufhjblocneiptswojvac.supabase.co/rest/v1/tickets?id=eq.{{ $('Supabase - Create Ticket').item.json.id }}",
         "sendHeaders": true,
         "headerParameters": {
           "parameters": [
             {
               "name": "apikey",
-              "value": "=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inl0bGJyZW15dW9sdGNkbGl5bm5jIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc4NDk3Mzg0NiwiZXhwIjoyMTAwNTQ5ODQ2fQ.phFt6d5ln98GBUNisiVK4Zy8MSf-7_nnCI9bJ0JIXGs"
+              "value": "=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVmaGpibG9jbmVpcHRzd29qdmFjIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc4NTMwNDAzNywiZXhwIjoyMTAwODgwMDM3fQ.Q2cwZ7beqdZZCHgeESeGp0OGgodzi2mQJuQdKePPsQM"
             },
             {
               "name": "Authorization",
-              "value": "Bearer  eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inl0bGJyZW15dW9sdGNkbGl5bm5jIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc4NDk3Mzg0NiwiZXhwIjoyMTAwNTQ5ODQ2fQ.phFt6d5ln98GBUNisiVK4Zy8MSf-7_nnCI9bJ0JIXGs"
+              "value": "Bearer  eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVmaGpibG9jbmVpcHRzd29qdmFjIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc4NTMwNDAzNywiZXhwIjoyMTAwODgwMDM3fQ.Q2cwZ7beqdZZCHgeESeGp0OGgodzi2mQJuQdKePPsQM"
             }
           ]
         },
@@ -238,17 +238,17 @@
     {
       "parameters": {
         "method": "PATCH",
-        "url": "=https://ytlbremyuoltcdliynnc.supabase.co/rest/v1/tickets?id=eq.{{ $('Supabase - Create Ticket').item.json.id }}",
+        "url": "=https://ufhjblocneiptswojvac.supabase.co/rest/v1/tickets?id=eq.{{ $('Supabase - Create Ticket').item.json.id }}",
         "sendHeaders": true,
         "headerParameters": {
           "parameters": [
             {
               "name": "apikey",
-              "value": "=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inl0bGJyZW15dW9sdGNkbGl5bm5jIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc4NDk3Mzg0NiwiZXhwIjoyMTAwNTQ5ODQ2fQ.phFt6d5ln98GBUNisiVK4Zy8MSf-7_nnCI9bJ0JIXGs"
+              "value": "=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVmaGpibG9jbmVpcHRzd29qdmFjIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc4NTMwNDAzNywiZXhwIjoyMTAwODgwMDM3fQ.Q2cwZ7beqdZZCHgeESeGp0OGgodzi2mQJuQdKePPsQM"
             },
             {
               "name": "Authorization",
-              "value": "Bearer  eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inl0bGJyZW15dW9sdGNkbGl5bm5jIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc4NDk3Mzg0NiwiZXhwIjoyMTAwNTQ5ODQ2fQ.phFt6d5ln98GBUNisiVK4Zy8MSf-7_nnCI9bJ0JIXGs"
+              "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVmaGpibG9jbmVpcHRzd29qdmFjIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc4NTMwNDAzNywiZXhwIjoyMTAwODgwMDM3fQ.Q2cwZ7beqdZZCHgeESeGp0OGgodzi2mQJuQdKePPsQM"
             }
           ]
         },
@@ -268,51 +268,6 @@
     },
     {
       "parameters": {
-        "method": "POST",
-        "url": "=https://ytlbremyuoltcdliynnc.supabase.co/rest/v1/rpc/match_document_chunks",
-        "sendHeaders": true,
-        "headerParameters": {
-          "parameters": [
-            {
-              "name": "apikey",
-              "value": "=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inl0bGJyZW15dW9sdGNkbGl5bm5jIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc4NDk3Mzg0NiwiZXhwIjoyMTAwNTQ5ODQ2fQ.phFt6d5ln98GBUNisiVK4Zy8MSf-7_nnCI9bJ0JIXGs"
-            },
-            {
-              "name": "Authorization",
-              "value": "Bearer  eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inl0bGJyZW15dW9sdGNkbGl5bm5jIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc4NDk3Mzg0NiwiZXhwIjoyMTAwNTQ5ODQ2fQ.phFt6d5ln98GBUNisiVK4Zy8MSf-7_nnCI9bJ0JIXGs"
-            }
-          ]
-        },
-        "sendBody": true,
-        "specifyBody": "json",
-        "jsonBody": "={{ JSON.stringify({ query_embedding: $json.embedding.values, match_count: 5, similarity_threshold: 0.7 }) }}",
-        "options": {}
-      },
-      "id": "3c2f2f1f-4cc8-4f51-bb24-4d2156092a24",
-      "name": "Supabase - Truy xuất tài liệu (RAG)",
-      "type": "n8n-nodes-base.httpRequest",
-      "typeVersion": 4.2,
-      "position": [
-        448,
-        352
-      ],
-      "alwaysOutputData": true
-    },
-    {
-      "parameters": {
-        "jsCode": "const chunks = $input.all();\n\nconst context = chunks\n  .map(item => item.json.chunk_text)\n  .filter(Boolean)\n  .join('\\n---\\n');\n\nreturn [{\n  json: {\n    context,\n    has_context: chunks.length > 0\n  }\n}];"
-      },
-      "id": "4a681a87-fa32-4069-bad0-5f75e9a9d2ba",
-      "name": "Ghép Context",
-      "type": "n8n-nodes-base.code",
-      "typeVersion": 2,
-      "position": [
-        656,
-        352
-      ]
-    },
-    {
-      "parameters": {
         "jsCode": "const out = $input.first().json.output;\nconst parsed = out && typeof out === 'object' ? out : { answer: '', confidence: 0, can_auto_send: false };\nreturn [{ json: parsed }];"
       },
       "id": "9f33858b-3b5e-4104-8ab6-4fad44f28b46",
@@ -320,8 +275,8 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        1136,
-        352
+        656,
+        336
       ]
     },
     {
@@ -330,12 +285,12 @@
           "options": {
             "caseSensitive": true,
             "leftValue": "",
-            "typeValidation": "strict",
+            "typeValidation": "loose",
             "version": 2
           },
           "conditions": [
             {
-              "leftValue": "={{ true }}",
+              "leftValue": "={{ $json.can_auto_send }}",
               "rightValue": true,
               "operator": {
                 "type": "boolean",
@@ -344,26 +299,18 @@
               "id": "f0c86632-b31c-4f41-80da-0ccf31eeb900"
             },
             {
-              "leftValue": "={{ 0.95 }}",
+              "leftValue": "={{ $json.confidence }}",
               "rightValue": 0.75,
               "operator": {
                 "type": "number",
                 "operation": "gte"
               },
               "id": "2fa958cf-f85f-4950-ae6f-acdf751c3288"
-            },
-            {
-              "leftValue": "={{ $('Parse kết quả').item.json.category }}",
-              "rightValue": "inquiry",
-              "operator": {
-                "type": "string",
-                "operation": "notEquals"
-              },
-              "id": "a93b914e-8808-4b57-9efe-a1eb1cdc04a9"
             }
           ],
           "combinator": "and"
         },
+        "looseTypeValidation": true,
         "options": {}
       },
       "id": "fc48d16b-e889-45aa-b575-2709a8c3df0d",
@@ -371,24 +318,24 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
       "position": [
-        1328,
-        352
+        944,
+        336
       ]
     },
     {
       "parameters": {
         "method": "POST",
-        "url": "=https://ytlbremyuoltcdliynnc.supabase.co/rest/v1/messages",
+        "url": "=https://ufhjblocneiptswojvac.supabase.co/rest/v1/messages",
         "sendHeaders": true,
         "headerParameters": {
           "parameters": [
             {
               "name": "apikey",
-              "value": "=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inl0bGJyZW15dW9sdGNkbGl5bm5jIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc4NDk3Mzg0NiwiZXhwIjoyMTAwNTQ5ODQ2fQ.phFt6d5ln98GBUNisiVK4Zy8MSf-7_nnCI9bJ0JIXGs"
+              "value": "=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVmaGpibG9jbmVpcHRzd29qdmFjIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc4NTMwNDAzNywiZXhwIjoyMTAwODgwMDM3fQ.Q2cwZ7beqdZZCHgeESeGp0OGgodzi2mQJuQdKePPsQM"
             },
             {
               "name": "Authorization",
-              "value": "Bearer  eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inl0bGJyZW15dW9sdGNkbGl5bm5jIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc4NDk3Mzg0NiwiZXhwIjoyMTAwNTQ5ODQ2fQ.phFt6d5ln98GBUNisiVK4Zy8MSf-7_nnCI9bJ0JIXGs"
+              "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVmaGpibG9jbmVpcHRzd29qdmFjIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc4NTMwNDAzNywiZXhwIjoyMTAwODgwMDM3fQ.Q2cwZ7beqdZZCHgeESeGp0OGgodzi2mQJuQdKePPsQM"
             }
           ]
         },
@@ -402,24 +349,24 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        1552,
-        224
+        1200,
+        192
       ]
     },
     {
       "parameters": {
         "method": "PATCH",
-        "url": "=https://ytlbremyuoltcdliynnc.supabase.co/rest/v1/tickets?id=eq.{{ $('Supabase - Create Ticket').item.json.id }}",
+        "url": "=https://ufhjblocneiptswojvac.supabase.co/rest/v1/tickets?id=eq.{{ $('Supabase - Create Ticket').item.json.id }}",
         "sendHeaders": true,
         "headerParameters": {
           "parameters": [
             {
               "name": "apikey",
-              "value": "=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inl0bGJyZW15dW9sdGNkbGl5bm5jIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc4NDk3Mzg0NiwiZXhwIjoyMTAwNTQ5ODQ2fQ.phFt6d5ln98GBUNisiVK4Zy8MSf-7_nnCI9bJ0JIXGs"
+              "value": "=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVmaGpibG9jbmVpcHRzd29qdmFjIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc4NTMwNDAzNywiZXhwIjoyMTAwODgwMDM3fQ.Q2cwZ7beqdZZCHgeESeGp0OGgodzi2mQJuQdKePPsQM"
             },
             {
               "name": "Authorization",
-              "value": "Bearer  eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inl0bGJyZW15dW9sdGNkbGl5bm5jIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc4NDk3Mzg0NiwiZXhwIjoyMTAwNTQ5ODQ2fQ.phFt6d5ln98GBUNisiVK4Zy8MSf-7_nnCI9bJ0JIXGs"
+              "value": "Bearer  eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVmaGpibG9jbmVpcHRzd29qdmFjIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc4NTMwNDAzNywiZXhwIjoyMTAwODgwMDM3fQ.Q2cwZ7beqdZZCHgeESeGp0OGgodzi2mQJuQdKePPsQM"
             }
           ]
         },
@@ -433,8 +380,8 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        1760,
-        224
+        1408,
+        192
       ]
     },
     {
@@ -448,30 +395,30 @@
       "type": "n8n-nodes-base.respondToWebhook",
       "typeVersion": 1.1,
       "position": [
-        2240,
-        224
+        1888,
+        192
       ]
     },
     {
       "parameters": {
         "method": "PATCH",
-        "url": "=https://ytlbremyuoltcdliynnc.supabase.co/rest/v1/tickets?id=eq.{{ $('Supabase - Create Ticket').item.json.id }}",
+        "url": "=https://ufhjblocneiptswojvac.supabase.co/rest/v1/tickets?id=eq.{{ $('Supabase - Create Ticket').item.json.id }}",
         "sendHeaders": true,
         "headerParameters": {
           "parameters": [
             {
               "name": "apikey",
-              "value": "=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inl0bGJyZW15dW9sdGNkbGl5bm5jIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc4NDk3Mzg0NiwiZXhwIjoyMTAwNTQ5ODQ2fQ.phFt6d5ln98GBUNisiVK4Zy8MSf-7_nnCI9bJ0JIXGs"
+              "value": "=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVmaGpibG9jbmVpcHRzd29qdmFjIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc4NTMwNDAzNywiZXhwIjoyMTAwODgwMDM3fQ.Q2cwZ7beqdZZCHgeESeGp0OGgodzi2mQJuQdKePPsQM"
             },
             {
               "name": "Authorization",
-              "value": "Bearer  eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inl0bGJyZW15dW9sdGNkbGl5bm5jIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc4NDk3Mzg0NiwiZXhwIjoyMTAwNTQ5ODQ2fQ.phFt6d5ln98GBUNisiVK4Zy8MSf-7_nnCI9bJ0JIXGs"
+              "value": "Bearer  eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVmaGpibG9jbmVpcHRzd29qdmFjIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc4NTMwNDAzNywiZXhwIjoyMTAwODgwMDM3fQ.Q2cwZ7beqdZZCHgeESeGp0OGgodzi2mQJuQdKePPsQM"
             }
           ]
         },
         "sendBody": true,
         "specifyBody": "json",
-        "jsonBody": "={{\nJSON.stringify({\n  status: 'escalated',\n  resolution_type: 'human',\n  confidence_score: $('Parse Kết quả Trả lời').item.json.confidence,\n  ai_summary:\n    'Danh muc: ' + $('Parse kết quả').item.json.category +\n    '. Ly do: ' + $('Parse kết quả').item.json.reason +\n    '. De xuat AI (chua gui): ' + $json.answer,\n  assigned_team: $('Parse kết quả').item.json.category\n})\n}}",
+        "jsonBody": "={{\nJSON.stringify({\n  status: 'escalated',\n  resolution_type: 'human',\n  confidence_score: $('Parse Kết quả Trả lời').item.json.confidence,\n  ai_summary:\n    'Danh mục: ' + $('Parse kết quả').item.json.category +\n    '. Lý do: ' + $('Parse kết quả').item.json.reason +\n    '. Đề xuất AI trả lời: ' + $json.answer,\n  assigned_team: $('Parse kết quả').item.json.category\n})\n}}",
         "options": {}
       },
       "id": "704604ec-ed6a-4138-9e63-402cdddeaaff",
@@ -479,8 +426,8 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        1552,
-        464
+        1200,
+        448
       ]
     },
     {
@@ -494,8 +441,8 @@
       "type": "n8n-nodes-base.respondToWebhook",
       "typeVersion": 1.1,
       "position": [
-        1792,
-        464
+        1440,
+        448
       ]
     },
     {
@@ -539,7 +486,7 @@
         "text": "={{ $('Merge').item.json.content }}",
         "hasOutputParser": true,
         "options": {
-          "systemMessage": "Ban la bo phan loai yeu cau cho tong dai ho tro khach hang. Phan loai noi dung sau vao 1 trong cac nhom: inquiry, complaint, technical, payment, urgent, spam, insufficient_info. Danh gia them: priority (1=khan cap nhat den 5=thap nhat), is_spam (bool), is_insufficient_info (bool), reason (giai thich ngan). CHI tra ve JSON thuan, khong markdown, khong giai thich them, dung dinh dang: {\"category\":\"...\",\"priority\":1,\"is_spam\":false,\"is_insufficient_info\":false,\"reason\":\"...\"}"
+          "systemMessage": "=Ban la bo phan loai yeu cau cho tong dai ho tro khach hang.\n\nPhan loai noi dung nguoi dung vao DUNG 1 nhom:\n- inquiry: hoi thong tin, tu van, yeu cau huong dan\n- complaint: khieu nai, phan anh chat luong dich vu\n- technical: loi ky thuat, loi he thong, khong su dung duoc\n- payment: thanh toan, hoa don, hoan tien, giao dich\n- urgent: su co nghiem trong can xu ly ngay\n- spam: quang cao, noi dung vo nghia, khong lien quan\n- duplicate: trung voi ticket da ton tai\n- insufficient_info: thieu thong tin de xac dinh van de\n\nQuy tac:\n1. Chi duoc chon 1 category.\n2. Neu la spam thi category = spam.\n3. Neu thieu thong tin nghiem trong thi category = insufficient_info.\n4. Neu anh huong nghiem trong den van hanh, mat du lieu, dung he thong thi category = urgent.\n5. Chi chon duplicate khi co bang chung ro rang la trung lap.\n\nDanh gia them:\n- priority: 1 den 5 (1 cao nhat, 5 thap nhat)\n- is_spam: true hoac false\n- is_insufficient_info: true hoac false\n- reason: giai thich ngan gon duoi 20 tu \n\nCHI tra ve JSON thuan, khong markdown, khong giai thich them, dung dinh dang: {\"category\":\"...\",\"priority\":1,\"is_spam\":false,\"is_insufficient_info\":false,\"reason\":\"...\"}"
         }
       },
       "id": "310f23ed-0b0c-4290-b78a-f32795008489",
@@ -550,42 +497,6 @@
         -864,
         128
       ]
-    },
-    {
-      "parameters": {
-        "method": "POST",
-        "url": "https://generativelanguage.googleapis.com/v1beta/models/gemini-embedding-001:embedContent",
-        "sendQuery": true,
-        "queryParameters": {
-          "parameters": [
-            {
-              "name": "key",
-              "value": "AIzaSyC_4DwgEuvQ7s0pzd-IzlMw-ISgo11S9gw"
-            }
-          ]
-        },
-        "sendHeaders": true,
-        "headerParameters": {
-          "parameters": [
-            {
-              "name": "Content-Type",
-              "value": "application/json"
-            }
-          ]
-        },
-        "sendBody": true,
-        "specifyBody": "json",
-        "jsonBody": "={\n  \"model\": \"models/gemini-embedding-001\",\n  \"content\": {\n    \"parts\": [\n      {\n        \"text\": \"{{ $('Merge').item.json.content }}\"\n      }\n    ]\n  },\n  \"outputDimensionality\": 1536\n}",
-        "options": {}
-      },
-      "type": "n8n-nodes-base.httpRequest",
-      "typeVersion": 4.4,
-      "position": [
-        240,
-        352
-      ],
-      "id": "15e8c3ba-f7e9-451b-895a-5ef3b0064d29",
-      "name": "Embedding Google"
     },
     {
       "parameters": {
@@ -602,27 +513,6 @@
     },
     {
       "parameters": {
-        "model": "gpt-4.1",
-        "options": {}
-      },
-      "id": "492ec0b9-4d4b-451b-86ca-6408f34ab162",
-      "name": "OpenAI Chat Model - Trả lời",
-      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
-      "typeVersion": 1,
-      "position": [
-        768,
-        576
-      ],
-      "credentials": {
-        "openAiApi": {
-          "id": null,
-          "name": "",
-          "__aiGatewayManaged": true
-        }
-      }
-    },
-    {
-      "parameters": {
         "schemaType": "manual",
         "inputSchema": "{\n  \"type\": \"object\",\n  \"properties\": {\n    \"answer\": { \"type\": \"string\" },\n    \"confidence\": { \"type\": \"number\" },\n    \"can_auto_send\": { \"type\": \"boolean\" }\n  },\n  \"required\": [\"answer\",\"confidence\",\"can_auto_send\"]\n}"
       },
@@ -631,26 +521,8 @@
       "type": "@n8n/n8n-nodes-langchain.outputParserStructured",
       "typeVersion": 1.2,
       "position": [
-        976,
+        672,
         576
-      ]
-    },
-    {
-      "parameters": {
-        "promptType": "define",
-        "text": "={{ `CONTEXT:\\n${$json.context}\\n\\nCAU HOI KHACH HANG:\\n${$('Merge').item.json.content}` }}",
-        "hasOutputParser": true,
-        "options": {
-          "systemMessage": "=Ban la tro ly cham soc khach hang. CHI duoc su dung thong tin trong phan CONTEXT duoi day de tra loi. Neu CONTEXT khong du de tra loi chinh xac, hay dat can_auto_send = false va confidence thap. Tra loi bang tieng Viet, giong lich su, ngan gon, ro rang. CHI tra ve JSON thuan dung dinh dang: {\"answer\":\"...\",\"confidence\":0.0,\"can_auto_send\":false}"
-        }
-      },
-      "id": "f37617cf-adea-4141-9db9-36bccdb6aefb",
-      "name": "AI Agent - Sinh câu trả lời (RAG)1",
-      "type": "@n8n/n8n-nodes-langchain.agent",
-      "typeVersion": 1.9,
-      "position": [
-        816,
-        352
       ]
     },
     {
@@ -871,8 +743,8 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.4,
       "position": [
-        2000,
-        224
+        1648,
+        192
       ],
       "id": "74057d06-8cc1-4b37-bb6b-caaa23f0f212",
       "name": "Send Response Zalo1"
@@ -890,6 +762,98 @@
       "position": [
         656,
         128
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "retrieve-as-tool",
+        "toolDescription": "Call this tool to look up the request of customer support",
+        "tableName": {
+          "__rl": true,
+          "value": "documents",
+          "mode": "list",
+          "cachedResultName": "documents"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.vectorStoreSupabase",
+      "typeVersion": 1.3,
+      "position": [
+        352,
+        576
+      ],
+      "id": "50600d87-6d85-4c08-aae5-53b6eb51d4ad",
+      "name": "Supabase Vector Store",
+      "credentials": {
+        "supabaseApi": {
+          "id": "B1DPRudBBF5rxbwm",
+          "name": "Supabase account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.embeddingsOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        448,
+        752
+      ],
+      "id": "3b59ae34-ace5-47f3-9c55-f1ed604a212e",
+      "name": "Embeddings OpenAI",
+      "credentials": {
+        "openAiApi": {
+          "id": null,
+          "name": "",
+          "__aiGatewayManaged": true
+        }
+      }
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "value": "gpt-4.1",
+          "mode": "list",
+          "cachedResultName": "gpt-4.1"
+        },
+        "responsesApiEnabled": false,
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.3,
+      "position": [
+        96,
+        560
+      ],
+      "id": "20b183c8-63b0-4f36-852e-2d2cd1545cc9",
+      "name": "OpenAI Chat Model",
+      "credentials": {
+        "openAiApi": {
+          "id": null,
+          "name": "",
+          "__aiGatewayManaged": true
+        }
+      }
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ `CAU HOI KHACH HANG:\\n${$node[\"Merge\"].json[\"content\"]}` }}",
+        "hasOutputParser": true,
+        "options": {
+          "systemMessage": "=Ban la tro ly cham soc khach hang su dung he thong RAG.\n\nNhiem vu:\n- Chi su dung thong tin tim duoc tu he thong.\n- Khong tu suy dien hoac bo sung thong tin ngoai he thong.\n- Neu khong tim thay thong tin hoac thong tin khong du de tra loi chinh xac:\n  + Dat can_auto_send = false\n  + Dat confidence thap (duoi 0.7)\n  + Giai thich ngan gon rang chua tim thay thong tin phu hop.\n\nNeu tim thay thong tin day du:\n  + Dat can_auto_send = true\n  + Dat confidence theo muc do chac chan tu 0 den 1.\n\nTra loi bang tieng Viet.\nNgan gon, ro rang, lich su.\n\nCHI duoc tra ve JSON hop le theo dung dinh dang:\n\n{\n  \"answer\": \"string\",\n  \"confidence\": 0.0,\n  \"can_auto_send\": false\n}"
+        }
+      },
+      "id": "65d48215-5b4d-4014-a2e5-84ded0cf8e5e",
+      "name": "AI Agent - Sinh câu trả lời (RAG)",
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 1.9,
+      "position": [
+        224,
+        336
       ]
     }
   ],
@@ -979,7 +943,7 @@
         ],
         [
           {
-            "node": "Embedding Google",
+            "node": "AI Agent - Sinh câu trả lời (RAG)",
             "type": "main",
             "index": 0
           }
@@ -991,28 +955,6 @@
         [
           {
             "node": "Send Response Zalo",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Supabase - Truy xuất tài liệu (RAG)": {
-      "main": [
-        [
-          {
-            "node": "Ghép Context",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Ghép Context": {
-      "main": [
-        [
-          {
-            "node": "AI Agent - Sinh câu trả lời (RAG)1",
             "type": "main",
             "index": 0
           }
@@ -1114,17 +1056,6 @@
         ]
       ]
     },
-    "Embedding Google": {
-      "main": [
-        [
-          {
-            "node": "Supabase - Truy xuất tài liệu (RAG)",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "Parse kết quả": {
       "main": [
         [
@@ -1136,34 +1067,12 @@
         ]
       ]
     },
-    "OpenAI Chat Model - Trả lời": {
-      "ai_languageModel": [
-        [
-          {
-            "node": "AI Agent - Sinh câu trả lời (RAG)1",
-            "type": "ai_languageModel",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "Structured Output - Trả lời1": {
       "ai_outputParser": [
         [
           {
-            "node": "AI Agent - Sinh câu trả lời (RAG)1",
+            "node": "AI Agent - Sinh câu trả lời (RAG)",
             "type": "ai_outputParser",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "AI Agent - Sinh câu trả lời (RAG)1": {
-      "main": [
-        [
-          {
-            "node": "Parse Kết quả Trả lời",
-            "type": "main",
             "index": 0
           }
         ]
@@ -1246,6 +1155,50 @@
           }
         ]
       ]
+    },
+    "Supabase Vector Store": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent - Sinh câu trả lời (RAG)",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Embeddings OpenAI": {
+      "ai_embedding": [
+        [
+          {
+            "node": "Supabase Vector Store",
+            "type": "ai_embedding",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent - Sinh câu trả lời (RAG)",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent - Sinh câu trả lời (RAG)": {
+      "main": [
+        [
+          {
+            "node": "Parse Kết quả Trả lời",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
   "active": false,
@@ -1254,7 +1207,7 @@
     "binaryMode": "separate",
     "availableInMCP": false
   },
-  "versionId": "54e1c55a-2cbc-4fe0-abff-83dcea10f091",
+  "versionId": "f8fd02e4-ac63-4577-bf5b-3e85ffd9cd91",
   "meta": {
     "templateCredsSetupCompleted": true,
     "instanceId": "3bcd7fd6b33c3f14aebe749ee4e92a2d5cf7366afb7ca3ff80c2b91173fc7a7c"

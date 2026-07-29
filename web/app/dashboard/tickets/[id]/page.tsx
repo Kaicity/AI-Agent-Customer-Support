@@ -3,6 +3,7 @@ import StatusBadge from "@/components/StatusBadge";
 import PriorityBadge from "@/components/PriorityBadge";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
+import { getCategoryLabel } from "@/helper/category";
 
 async function sendReply(formData: FormData) {
   "use server";
@@ -104,7 +105,7 @@ export default async function TicketDetailPage({
       </div>
       <p className="text-sm text-ink-700/70 font-mono mb-6">
         {ticket.sender_identifier} · kênh {ticket.channel} · danh mục{" "}
-        {ticket.category || "chưa xác định"}
+        {getCategoryLabel(ticket.category) || "chưa xác định"}
       </p>
 
       {ticket.ai_summary && (

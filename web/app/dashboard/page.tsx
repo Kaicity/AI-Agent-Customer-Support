@@ -2,6 +2,7 @@ import Link from "next/link";
 import { createClient } from "@/lib/supabase-server";
 import StatusBadge from "@/components/StatusBadge";
 import PriorityBadge from "@/components/PriorityBadge";
+import { getCategoryLabel } from "@/helper/category";
 
 const FILTERS = [
   { value: "", label: "Tất cả" },
@@ -20,7 +21,9 @@ export default async function QueuePage({
 
   let query = supabase
     .from("tickets")
-    .select("id, channel, sender_name, sender_identifier, category, priority, status, created_at")
+    .select(
+      "id, channel, sender_name, sender_identifier, category, priority, status, created_at",
+    )
     .order("priority", { ascending: true })
     .order("created_at", { ascending: false })
     .limit(50);
@@ -80,7 +83,10 @@ export default async function QueuePage({
             )}
             {tickets && tickets.length === 0 && (
               <tr>
-                <td colSpan={6} className="px-4 py-10 text-center text-ink-700/60 text-sm">
+                <td
+                  colSpan={6}
+                  className="px-4 py-10 text-center text-ink-700/60 text-sm"
+                >
                   Không có yêu cầu nào phù hợp bộ lọc.
                 </td>
               </tr>
@@ -94,15 +100,22 @@ export default async function QueuePage({
                   <PriorityBadge priority={t.priority} />
                 </td>
                 <td className="px-4 py-3">
-                  <Link href={`/dashboard/tickets/${t.id}`} className="hover:underline">
+                  <Link
+                    href={`/dashboard/tickets/${t.id}`}
+                    className="hover:underline"
+                  >
                     <div className="font-medium text-ink-950">
                       {t.sender_name || t.sender_identifier}
                     </div>
-                    <div className="text-xs text-ink-700/60">{t.sender_identifier}</div>
+                    <div className="text-xs text-ink-700/60">
+                      {t.sender_identifier}
+                    </div>
                   </Link>
                 </td>
                 <td className="px-4 py-3 text-ink-700">{t.channel}</td>
-                <td className="px-4 py-3 text-ink-700">{t.category || "—"}</td>
+                <td className="px-4 py-3 text-ink-700">
+                  {getCategoryLabel(t.category)}
+                </td>
                 <td className="px-4 py-3">
                   <StatusBadge status={t.status} />
                 </td>
