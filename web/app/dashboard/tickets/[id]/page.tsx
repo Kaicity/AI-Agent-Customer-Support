@@ -32,11 +32,7 @@ async function sendReply(formData: FormData) {
     sent_by: user?.email || "nhan_su",
   });
 
-  console.log(ticket);
-
   if (ticket.channel === "chat_app") {
-    console.log("Hello");
-
     const response = await fetch(
       `https://bot-api.zaloplatforms.com/bot${process.env.ZALO_BOT_TOKEN}/sendMessage`,
       {
