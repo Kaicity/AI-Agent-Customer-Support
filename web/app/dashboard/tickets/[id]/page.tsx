@@ -32,6 +32,7 @@ async function sendReply(formData: FormData) {
     sent_by: user?.email || "nhan_su",
   });
 
+  // Gửi phản hồi zalo
   if (ticket.channel === "chat_app") {
     const response = await fetch(
       `https://bot-api.zaloplatforms.com/bot${process.env.ZALO_BOT_TOKEN}/sendMessage`,
@@ -65,6 +66,7 @@ async function sendReply(formData: FormData) {
     .eq("id", ticketId);
 
   revalidatePath(`/dashboard/tickets/${ticketId}`);
+  redirect(`/dashboard/tickets/${ticketId}`);
 }
 
 export default async function TicketDetailPage({

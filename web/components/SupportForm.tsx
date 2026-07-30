@@ -1,12 +1,14 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 
 type Result = {
   status?: string;
   message?: string;
   answer?: string;
   error?: string;
+  ticket_id?: string;
 };
 
 const STATUS_LABEL: Record<string, { label: string; color: string }> = {
@@ -63,7 +65,9 @@ export default function SupportForm() {
           />
         </div>
         <div>
-          <label className="block text-sm text-ink-700 mb-1">Email hoặc số điện thoại</label>
+          <label className="block text-sm text-ink-700 mb-1">
+            Email hoặc số điện thoại
+          </label>
           <input
             required
             value={contact}
@@ -73,7 +77,9 @@ export default function SupportForm() {
           />
         </div>
         <div>
-          <label className="block text-sm text-ink-700 mb-1">Nội dung yêu cầu</label>
+          <label className="block text-sm text-ink-700 mb-1">
+            Nội dung yêu cầu
+          </label>
           <textarea
             required
             rows={5}
@@ -109,6 +115,14 @@ export default function SupportForm() {
               <p className="text-sm text-ink-900">
                 {result.answer || result.message}
               </p>
+              {result.ticket_id && result.status !== "closed_spam" && (
+                <Link
+                  href={`/status?id=${encodeURIComponent(result.ticket_id)}&contact=${encodeURIComponent(contact)}`}
+                  className="inline-block mt-3 text-xs font-mono text-signal-600 hover:underline"
+                >
+                  Theo dõi yêu cầu này →
+                </Link>
+              )}
             </>
           )}
         </div>
