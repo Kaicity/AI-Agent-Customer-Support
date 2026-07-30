@@ -17,8 +17,8 @@
       "type": "@n8n/n8n-nodes-langchain.vectorStoreSupabase",
       "typeVersion": 1.3,
       "position": [
-        528,
-        -912
+        640,
+        -880
       ],
       "id": "8bf832fb-752e-435a-9e7b-04e794e9d182",
       "name": "Supabase Vector Store",
@@ -37,8 +37,8 @@
       "type": "@n8n/n8n-nodes-langchain.documentDefaultDataLoader",
       "typeVersion": 1.1,
       "position": [
-        672,
-        -720
+        800,
+        -704
       ],
       "id": "b5c51ff5-f1c1-4c3f-bda3-9593d83ad9bd",
       "name": "Default Data Loader"
@@ -50,8 +50,8 @@
       "type": "@n8n/n8n-nodes-langchain.embeddingsOpenAi",
       "typeVersion": 1.2,
       "position": [
-        448,
-        -720
+        560,
+        -704
       ],
       "id": "1f3750c3-ba6d-4047-8286-4a82688943d5",
       "name": "Embeddings OpenAI",
@@ -68,18 +68,16 @@
         "operation": "download",
         "fileId": {
           "__rl": true,
-          "value": "1cCZGnFd3gjCqNYKP8VRvy-VjRPbsSx3j",
-          "mode": "list",
-          "cachedResultName": "TechNet_RAG.pdf",
-          "cachedResultUrl": "https://drive.google.com/file/d/1cCZGnFd3gjCqNYKP8VRvy-VjRPbsSx3j/view?usp=drivesdk"
+          "value": "={{ $json.id }}",
+          "mode": "id"
         },
         "options": {}
       },
       "type": "n8n-nodes-base.googleDrive",
       "typeVersion": 3,
       "position": [
-        352,
-        -912
+        416,
+        -880
       ],
       "id": "48c693f6-5950-4a7f-a8e2-b9a1164428ca",
       "name": "Download file",
@@ -92,20 +90,29 @@
     },
     {
       "parameters": {
-        "resource": "fileFolder",
-        "queryString": "={{ $json.body.fileName }}",
-        "filter": {},
+        "inputDataFieldName": "file",
+        "name": "={{$binary.file.fileName}}",
+        "driveId": {
+          "__rl": true,
+          "mode": "list",
+          "value": "My Drive"
+        },
+        "folderId": {
+          "__rl": true,
+          "mode": "list",
+          "value": "root",
+          "cachedResultName": "/ (Root folder)"
+        },
         "options": {}
       },
       "type": "n8n-nodes-base.googleDrive",
       "typeVersion": 3,
       "position": [
-        16,
-        -912
+        224,
+        -880
       ],
-      "id": "825adddb-23ea-4f43-817a-de9aa97025b1",
-      "name": "Search files and folders",
-      "alwaysOutputData": true,
+      "id": "b887eea3-9e64-4d72-b2ee-edd5d2d31ecd",
+      "name": "Upload file",
       "credentials": {
         "googleDriveOAuth2Api": {
           "id": "hsirq7W1LKruQLBC",
@@ -116,21 +123,76 @@
     {
       "parameters": {
         "httpMethod": "POST",
-        "path": "b30bd574-5793-409e-9239-0e30b4993934",
+        "path": "7dc5a98e-af80-476d-b3af-cc9f1485b7ba",
         "options": {}
       },
       "type": "n8n-nodes-base.webhook",
       "typeVersion": 2.1,
       "position": [
-        -192,
-        -912
+        -16,
+        -880
       ],
-      "id": "cd72ee7e-dbc4-41b0-8b35-d5d539a16598",
+      "id": "3ca12ee2-1fcb-4fc9-9b4b-42432b58dfe4",
       "name": "Webhook",
-      "webhookId": "b30bd574-5793-409e-9239-0e30b4993934"
+      "webhookId": "7dc5a98e-af80-476d-b3af-cc9f1485b7ba"
     }
   ],
-  "pinData": {},
+  "pinData": {
+    "Webhook": [
+      {
+        "json": {
+          "headers": {
+            "host": "azure1620.app.n8n.cloud",
+            "user-agent": "node",
+            "content-length": "512778",
+            "accept": "*/*",
+            "accept-encoding": "gzip, br",
+            "accept-language": "*",
+            "cdn-loop": "cloudflare; loops=1; subreqs=1",
+            "cf-connecting-ip": "184.72.172.213",
+            "cf-ew-via": "15",
+            "cf-ipcountry": "US",
+            "cf-ray": "a22e3ec6ac58a568-IAD",
+            "cf-visitor": "{\"scheme\":\"https\"}",
+            "cf-worker": "n8n.cloud",
+            "content-type": "multipart/form-data; boundary=----formdata-undici-009427307255",
+            "sec-fetch-mode": "cors",
+            "x-forwarded-for": "184.72.172.213, 104.23.209.20",
+            "x-forwarded-host": "azure1620.app.n8n.cloud",
+            "x-forwarded-port": "443",
+            "x-forwarded-proto": "https",
+            "x-forwarded-server": "traefik-prod-users-swc-8-86bb864657-9rj9l",
+            "x-invocation-id": "hkg1::wnjqv-1785350352693-cfd353adc058",
+            "x-is-trusted": "yes",
+            "x-real-ip": "184.72.172.213",
+            "x-vercel-id": "hkg1::wnjqv-1785350352693-cfd353adc058"
+          },
+          "params": {},
+          "query": {},
+          "body": {
+            "fileName": "TechNet_RAG.pdf"
+          },
+          "webhookUrl": "https://azure1620.app.n8n.cloud/webhook/7dc5a98e-af80-476d-b3af-cc9f1485b7ba",
+          "executionMode": "production"
+        },
+        "binary": {
+          "file": {
+            "mimeType": "application/pdf",
+            "fileType": "pdf",
+            "fileExtension": "pdf",
+            "data": "filesystem-v2",
+            "fileName": "TechNet_RAG.pdf",
+            "id": "filesystem-v2:workflows/xQBLzLtlG09fXn6R/executions/290/binary_data/440365d4-e574-4025-be51-9390e10ba058",
+            "fileSize": "512 kB",
+            "bytes": 512492
+          }
+        },
+        "pairedItem": {
+          "item": 0
+        }
+      }
+    ]
+  },
   "connections": {
     "Default Data Loader": {
       "ai_document": [
@@ -165,11 +227,22 @@
         ]
       ]
     },
+    "Upload file": {
+      "main": [
+        [
+          {
+            "node": "Download file",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
     "Webhook": {
       "main": [
         [
           {
-            "node": "Search files and folders",
+            "node": "Upload file",
             "type": "main",
             "index": 0
           }
@@ -177,13 +250,13 @@
       ]
     }
   },
-  "active": false,
+  "active": true,
   "settings": {
     "executionOrder": "v1",
     "binaryMode": "separate",
     "availableInMCP": false
   },
-  "versionId": "df1ef813-c91d-4c55-b8dc-120068980120",
+  "versionId": "96995440-49b1-4168-8700-c7f07900945f",
   "meta": {
     "templateCredsSetupCompleted": true,
     "instanceId": "3bcd7fd6b33c3f14aebe749ee4e92a2d5cf7366afb7ca3ff80c2b91173fc7a7c"

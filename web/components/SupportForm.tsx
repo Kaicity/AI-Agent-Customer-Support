@@ -16,6 +16,7 @@ const STATUS_LABEL: Record<string, { label: string; color: string }> = {
   escalated: { label: "Đã chuyển nhân sự", color: "bg-flare-500" },
   waiting_customer: { label: "Cần bổ sung thông tin", color: "bg-flare-500" },
   closed_spam: { label: "Đã lọc bỏ", color: "bg-ink-700" },
+  closed_duplicate: { label: "Đã lọc trùng lặp", color: "bg-red-500" },
 };
 
 export default function SupportForm() {

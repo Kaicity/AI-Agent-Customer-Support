@@ -125,39 +125,6 @@
     },
     {
       "parameters": {
-        "conditions": {
-          "options": {
-            "caseSensitive": true,
-            "leftValue": "",
-            "typeValidation": "strict",
-            "version": 2
-          },
-          "conditions": [
-            {
-              "leftValue": "={{ $('Parse kết quả').item.json.is_spam }}",
-              "rightValue": true,
-              "operator": {
-                "type": "boolean",
-                "operation": "true"
-              },
-              "id": "ee4fc815-221a-41ed-a54d-a57227ee8c9f"
-            }
-          ],
-          "combinator": "and"
-        },
-        "options": {}
-      },
-      "id": "963dc12f-4739-4f63-81d5-d54b06d47566",
-      "name": "IF - Là Spam?",
-      "type": "n8n-nodes-base.if",
-      "typeVersion": 2.2,
-      "position": [
-        -224,
-        128
-      ]
-    },
-    {
-      "parameters": {
         "method": "PATCH",
         "url": "=https://ufhjblocneiptswojvac.supabase.co/rest/v1/tickets?id=eq.{{ $('Supabase - Create Ticket').item.json.id }}",
         "sendHeaders": true,
@@ -183,14 +150,14 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        0,
-        -48
+        144,
+        -208
       ]
     },
     {
       "parameters": {
         "respondWith": "json",
-        "responseBody": "={{ JSON.stringify({ status: 'closed_spam' }) }}",
+        "responseBody": "={{ JSON.stringify({ status: 'closed_spam', ticket_id: $('Supabase - Create Ticket').item.json.id }) }}",
         "options": {}
       },
       "id": "2bbd7eca-6025-4f20-bdc1-494a1c0dcaa1",
@@ -198,41 +165,8 @@
       "type": "n8n-nodes-base.respondToWebhook",
       "typeVersion": 1.1,
       "position": [
-        224,
-        -48
-      ]
-    },
-    {
-      "parameters": {
-        "conditions": {
-          "options": {
-            "caseSensitive": true,
-            "leftValue": "",
-            "typeValidation": "strict",
-            "version": 2
-          },
-          "conditions": [
-            {
-              "leftValue": "={{ $('Parse kết quả').item.json.is_insufficient_info }}",
-              "rightValue": true,
-              "operator": {
-                "type": "boolean",
-                "operation": "true"
-              },
-              "id": "39a523a9-50e4-4ff0-80c2-34316e12a427"
-            }
-          ],
-          "combinator": "and"
-        },
-        "options": {}
-      },
-      "id": "b0537bea-6890-4448-9aec-4d969aee1eab",
-      "name": "IF - Thiếu thông tin?",
-      "type": "n8n-nodes-base.if",
-      "typeVersion": 2.2,
-      "position": [
-        0,
-        144
+        336,
+        -208
       ]
     },
     {
@@ -262,8 +196,8 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        224,
-        128
+        144,
+        192
       ]
     },
     {
@@ -275,8 +209,8 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        656,
-        336
+        464,
+        480
       ]
     },
     {
@@ -318,8 +252,8 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
       "position": [
-        944,
-        336
+        656,
+        480
       ]
     },
     {
@@ -349,8 +283,8 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        1200,
-        192
+        944,
+        336
       ]
     },
     {
@@ -380,14 +314,14 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        1408,
-        192
+        1152,
+        336
       ]
     },
     {
       "parameters": {
         "respondWith": "json",
-        "responseBody": "={{ JSON.stringify({ status: 'resolved_auto', answer: $('Parse Kết quả Trả lời').item.json.answer }) }}",
+        "responseBody": "={{ JSON.stringify({ status: 'resolved_auto', answer: $('Parse Kết quả Trả lời').item.json.answer, ticket_id: $('Supabase - Create Ticket').item.json.id }) }}",
         "options": {}
       },
       "id": "f15c6b56-4625-4fee-9796-d7d055d7cf70",
@@ -395,8 +329,8 @@
       "type": "n8n-nodes-base.respondToWebhook",
       "typeVersion": 1.1,
       "position": [
-        1888,
-        192
+        1632,
+        336
       ]
     },
     {
@@ -426,14 +360,14 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        1200,
-        448
+        944,
+        608
       ]
     },
     {
       "parameters": {
         "respondWith": "json",
-        "responseBody": "={{ JSON.stringify({ status: 'escalated', message: 'Yêu cầu của bạn đã được ghi nhận và chuyển cho nhân sự phụ trách. Chúng tôi sẽ phản hồi sớm nhất.' }) }}",
+        "responseBody": "={{ JSON.stringify({ status: 'escalated', message: 'Yêu cầu của bạn đã được ghi nhận và chuyển cho nhân sự phụ trách. Chúng tôi sẽ phản hồi sớm nhất.', ticket_id: $('Supabase - Create Ticket').item.json.id }) }}",
         "options": {}
       },
       "id": "c3e5d100-a260-4f1e-b8bc-eacc9f6b38bb",
@@ -441,8 +375,8 @@
       "type": "n8n-nodes-base.respondToWebhook",
       "typeVersion": 1.1,
       "position": [
-        1440,
-        448
+        1376,
+        608
       ]
     },
     {
@@ -455,7 +389,7 @@
       "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
       "typeVersion": 1,
       "position": [
-        -928,
+        -896,
         336
       ],
       "credentials": {
@@ -469,14 +403,14 @@
     {
       "parameters": {
         "schemaType": "manual",
-        "inputSchema": "{\n  \"type\": \"object\",\n  \"properties\": {\n    \"category\": { \"type\": \"string\", \"enum\": [\"inquiry\",\"complaint\",\"technical\",\"payment\",\"urgent\",\"spam\",\"insufficient_info\"] },\n    \"priority\": { \"type\": \"number\" },\n    \"is_spam\": { \"type\": \"boolean\" },\n    \"is_insufficient_info\": { \"type\": \"boolean\" },\n    \"reason\": { \"type\": \"string\" }\n  },\n  \"required\": [\"category\",\"priority\",\"is_spam\",\"is_insufficient_info\",\"reason\"]\n}"
+        "inputSchema": "{\n  \"type\": \"object\",\n  \"properties\": {\n    \"category\": { \"type\": \"string\", \"enum\": [\"inquiry\",\"complaint\",\"technical\",\"payment\",\"urgent\",\"spam\",\"insufficient_info\", \"duplicate\"] },\n    \"priority\": { \"type\": \"number\" },\n    \"is_spam\": { \"type\": \"boolean\" },\n    \"is_insufficient_info\": { \"type\": \"boolean\" },\n    \"reason\": { \"type\": \"string\" }\n  },\n  \"required\": [\"category\",\"priority\",\"is_spam\",\"is_insufficient_info\",\"reason\"]\n}"
       },
       "id": "2d3dd3b8-4211-4b0a-bd61-35d77cf5b4a6",
       "name": "Structured Output - Phân loại",
       "type": "@n8n/n8n-nodes-langchain.outputParserStructured",
       "typeVersion": 1.2,
       "position": [
-        -704,
+        -672,
         336
       ]
     },
@@ -486,7 +420,7 @@
         "text": "={{ $('Merge').item.json.content }}",
         "hasOutputParser": true,
         "options": {
-          "systemMessage": "=Ban la bo phan loai yeu cau cho tong dai ho tro khach hang.\n\nPhan loai noi dung nguoi dung vao DUNG 1 nhom:\n- inquiry: hoi thong tin, tu van, yeu cau huong dan\n- complaint: khieu nai, phan anh chat luong dich vu\n- technical: loi ky thuat, loi he thong, khong su dung duoc\n- payment: thanh toan, hoa don, hoan tien, giao dich\n- urgent: su co nghiem trong can xu ly ngay\n- spam: quang cao, noi dung vo nghia, khong lien quan\n- duplicate: trung voi ticket da ton tai\n- insufficient_info: thieu thong tin de xac dinh van de\n\nQuy tac:\n1. Chi duoc chon 1 category.\n2. Neu la spam thi category = spam.\n3. Neu thieu thong tin nghiem trong thi category = insufficient_info.\n4. Neu anh huong nghiem trong den van hanh, mat du lieu, dung he thong thi category = urgent.\n5. Chi chon duplicate khi co bang chung ro rang la trung lap.\n\nDanh gia them:\n- priority: 1 den 5 (1 cao nhat, 5 thap nhat)\n- is_spam: true hoac false\n- is_insufficient_info: true hoac false\n- reason: giai thich ngan gon duoi 20 tu \n\nCHI tra ve JSON thuan, khong markdown, khong giai thich them, dung dinh dang: {\"category\":\"...\",\"priority\":1,\"is_spam\":false,\"is_insufficient_info\":false,\"reason\":\"...\"}"
+          "systemMessage": "=Ban la bo phan loai yeu cau cho tong dai ho tro khach hang.\n\nPhan loai noi dung nguoi dung vao DUNG 1 nhom:\n- inquiry: hoi thong tin, tu van, yeu cau huong dan\n- complaint: khieu nai, phan anh chat luong dich vu\n- technical: loi ky thuat, loi he thong, khong su dung duoc\n- payment: thanh toan, hoa don, hoan tien, giao dich\n- urgent: su co nghiem trong can xu ly ngay, khan cap\n- spam: quang cao, noi dung vo nghia, khong lien quan\n- duplicate: trung voi ticket da ton tai, cau tra loi lien tiep trung lap\n- insufficient_info: thieu thong tin de xac dinh van de\n\nQuy tac:\n1. Chi duoc chon 1 category.\n2. Neu la spam thi category = spam.\n3. Neu thieu thong tin nghiem trong thi category = insufficient_info.\n4. Neu anh huong nghiem trong den van hanh, mat du lieu, dung he thong thi category = urgent.\n5. Chi chon duplicate khi co bang chung ro rang la trung lap.\n\nDanh gia them:\n- priority: 1 den 5 (1 cao nhat, 5 thap nhat)\n- is_spam: true hoac false\n- is_insufficient_info: true hoac false\n- reason: giai thich ngan gon duoi 20 tu \n\nCHI tra ve JSON thuan, khong markdown, khong giai thich them, dung dinh dang: {\"category\":\"...\",\"priority\":1,\"is_spam\":false,\"is_insufficient_info\":false,\"reason\":\"...\"}"
         }
       },
       "id": "310f23ed-0b0c-4290-b78a-f32795008489",
@@ -521,8 +455,8 @@
       "type": "@n8n/n8n-nodes-langchain.outputParserStructured",
       "typeVersion": 1.2,
       "position": [
-        672,
-        576
+        576,
+        704
       ]
     },
     {
@@ -547,8 +481,8 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.4,
       "position": [
-        432,
-        128
+        352,
+        192
       ],
       "id": "427caf43-b670-49ff-9747-9ac4b04e1b76",
       "name": "Send Response Zalo"
@@ -660,7 +594,7 @@
       "typeVersion": 3.4,
       "position": [
         -1552,
-        -16
+        16
       ]
     },
     {
@@ -707,7 +641,7 @@
       "typeVersion": 3.4,
       "position": [
         -1552,
-        272
+        224
       ]
     },
     {
@@ -723,36 +657,8 @@
     },
     {
       "parameters": {
-        "method": "POST",
-        "url": "https://bot-api.zaloplatforms.com/bot4602954381826973562:ZmaEgVkNWIFHuVgEBTlOBSkewsCyrHKilkcRzNALuaYcLDppfJTDtYOuRGVyGmbq/sendMessage",
-        "sendBody": true,
-        "bodyParameters": {
-          "parameters": [
-            {
-              "name": "chat_id",
-              "value": "={{ $('Merge').item.json.sender_identifier }}"
-            },
-            {
-              "name": "text",
-              "value": "={{ $('Parse Kết quả Trả lời').item.json.answer }}"
-            }
-          ]
-        },
-        "options": {}
-      },
-      "type": "n8n-nodes-base.httpRequest",
-      "typeVersion": 4.4,
-      "position": [
-        1648,
-        192
-      ],
-      "id": "74057d06-8cc1-4b37-bb6b-caaa23f0f212",
-      "name": "Send Response Zalo1"
-    },
-    {
-      "parameters": {
         "respondWith": "json",
-        "responseBody": "={{ JSON.stringify({ status: 'waiting_customer', message: 'Yêu cầu của bạn cần thêm thông tin. Vui lòng cung cấp chi tiết hơn (VD: mã đơn hàng, ảnh chụp lỗi, thời điểm xảy ra) để chúng tôi hỗ trợ nhanh nhất.' }) }}",
+        "responseBody": "={{ JSON.stringify({ status: 'waiting_customer', message: 'Yêu cầu của bạn cần thêm thông tin. Vui lòng cung cấp chi tiết hơn (VD: mã đơn hàng, ảnh chụp lỗi, thời điểm xảy ra) để chúng tôi hỗ trợ nhanh nhất.', ticket_id: $('Supabase - Create Ticket').item.json.id }) }}",
         "options": {}
       },
       "id": "46a8ea95-d44f-4067-a78b-57a8630ea9e0",
@@ -760,8 +666,8 @@
       "type": "n8n-nodes-base.respondToWebhook",
       "typeVersion": 1.1,
       "position": [
-        656,
-        128
+        560,
+        192
       ]
     },
     {
@@ -779,8 +685,8 @@
       "type": "@n8n/n8n-nodes-langchain.vectorStoreSupabase",
       "typeVersion": 1.3,
       "position": [
-        352,
-        576
+        240,
+        704
       ],
       "id": "50600d87-6d85-4c08-aae5-53b6eb51d4ad",
       "name": "Supabase Vector Store",
@@ -798,8 +704,8 @@
       "type": "@n8n/n8n-nodes-langchain.embeddingsOpenAi",
       "typeVersion": 1.2,
       "position": [
-        448,
-        752
+        336,
+        848
       ],
       "id": "3b59ae34-ace5-47f3-9c55-f1ed604a212e",
       "name": "Embeddings OpenAI",
@@ -826,7 +732,7 @@
       "typeVersion": 1.3,
       "position": [
         96,
-        560
+        704
       ],
       "id": "20b183c8-63b0-4f36-852e-2d2cd1545cc9",
       "name": "OpenAI Chat Model",
@@ -852,9 +758,276 @@
       "type": "@n8n/n8n-nodes-langchain.agent",
       "typeVersion": 1.9,
       "position": [
-        224,
-        336
+        128,
+        480
       ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://bot-api.zaloplatforms.com/bot4602954381826973562:ZmaEgVkNWIFHuVgEBTlOBSkewsCyrHKilkcRzNALuaYcLDppfJTDtYOuRGVyGmbq/sendMessage",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "chat_id",
+              "value": "={{ $('Merge').item.json.sender_identifier }}"
+            },
+            {
+              "name": "text",
+              "value": "=Xin chào bạn,\n\nCảm ơn bạn đã liên hệ với TechNet VN. Hiện tại, yêu cầu của bạn đã được tiếp nhận. Vui lòng chờ nhân sự TechNet VN sẽ phản hồi chi tiết yêu cầu hỗ trợ của bạn bạn sớm nhất có thể.\n\nXin cảm ơn!"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "position": [
+        1168,
+        608
+      ],
+      "id": "b5dee8c1-de1f-4e28-9854-7654dc4e585c",
+      "name": "Thông báo đợi phản hồi qua zalo"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://bot-api.zaloplatforms.com/bot4602954381826973562:ZmaEgVkNWIFHuVgEBTlOBSkewsCyrHKilkcRzNALuaYcLDppfJTDtYOuRGVyGmbq/sendMessage",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "chat_id",
+              "value": "={{ $('Merge').item.json.sender_identifier }}"
+            },
+            {
+              "name": "text",
+              "value": "={{ $('Parse Kết quả Trả lời').item.json.answer }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "position": [
+        1392,
+        336
+      ],
+      "id": "74057d06-8cc1-4b37-bb6b-caaa23f0f212",
+      "name": "Gửi kết quả trả lời zalo"
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $('Parse kết quả').item.json.is_spam }}",
+                    "rightValue": "",
+                    "operator": {
+                      "type": "boolean",
+                      "operation": "true",
+                      "singleValue": true
+                    },
+                    "id": "ae675390-a728-4532-972b-75fefcca0c5f"
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "spam"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "id": "876fc8e4-6209-406f-9a50-9ea1a7246185",
+                    "leftValue": "={{ $('Parse kết quả').item.json.category }}",
+                    "rightValue": "duplicate",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "duplicate"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "id": "97ffebb2-c1ea-43e5-9ffd-f20fd97e789a",
+                    "leftValue": "={{ $('Parse kết quả').item.json.is_insufficient_info }}",
+                    "rightValue": "",
+                    "operator": {
+                      "type": "boolean",
+                      "operation": "true",
+                      "singleValue": true
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "insufficient_info"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "id": "34ed27d5-61a9-439a-84d8-ea7f06d5f397",
+                    "leftValue": "={{\n  $('Parse kết quả').item.json.category !== \"duplicate\" &&\n  !$('Parse kết quả').item.json.is_insufficient_info &&\n  !$('Parse kết quả').item.json.is_spam\n}}",
+                    "rightValue": "",
+                    "operator": {
+                      "type": "boolean",
+                      "operation": "true",
+                      "singleValue": true
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "proceed"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.4,
+      "position": [
+        -176,
+        192
+      ],
+      "id": "9ee76573-5079-4b5a-b71c-8e080b57f8f2",
+      "name": "Switch1"
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ JSON.stringify({ status: 'closed_duplicate', ticket_id: $('Supabase - Create Ticket').item.json.id }) }}",
+        "options": {}
+      },
+      "id": "a3e897d7-44b1-47cc-972f-b5c45c609b13",
+      "name": "Respond - Đã lọc trùng lặp",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        352,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "method": "PATCH",
+        "url": "=https://ufhjblocneiptswojvac.supabase.co/rest/v1/tickets?id=eq.{{ $('Supabase - Create Ticket').item.json.id }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "apikey",
+              "value": "=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVmaGpibG9jbmVpcHRzd29qdmFjIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc4NTMwNDAzNywiZXhwIjoyMTAwODgwMDM3fQ.Q2cwZ7beqdZZCHgeESeGp0OGgodzi2mQJuQdKePPsQM"
+            },
+            {
+              "name": "Authorization",
+              "value": "Bearer  eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVmaGpibG9jbmVpcHRzd29qdmFjIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc4NTMwNDAzNywiZXhwIjoyMTAwODgwMDM3fQ.Q2cwZ7beqdZZCHgeESeGp0OGgodzi2mQJuQdKePPsQM"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify({ status: 'closed_duplicate', resolution_type: 'auto', resolved_at: new Date().toISOString() }) }}",
+        "options": {}
+      },
+      "id": "deb67397-ad93-4d47-a9fa-52b1d0a51f19",
+      "name": "Supabase - Đóng trùng lặp",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        144,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "content": "## AGENT PHÂN LOẠI YÊU CẦU CỦA NGƯỜI DÙN",
+        "height": 512,
+        "width": 944,
+        "color": 2
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -1200,
+        -16
+      ],
+      "id": "099eb7b0-1172-413e-aa7f-a83a37a44f0d",
+      "name": "Sticky Note"
+    },
+    {
+      "parameters": {
+        "content": "## RAG TRUY VẤN DỮ LIỆU HỆ THỐNG",
+        "height": 592,
+        "width": 800,
+        "color": 6
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        48,
+        384
+      ],
+      "id": "23d21240-6bfa-4130-925a-8b44033a6244",
+      "name": "Sticky Note1"
+    },
+    {
+      "parameters": {
+        "content": "## ĐẦU VÀO ĐA KÊNH (WEBSITE / CHAT BOT)",
+        "height": 416,
+        "width": 848,
+        "color": 4
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -2080,
+        -16
+      ],
+      "id": "24520fd0-153f-499f-a5fb-ef22dadf1db1",
+      "name": "Sticky Note2"
     }
   ],
   "pinData": {},
@@ -896,25 +1069,7 @@
       "main": [
         [
           {
-            "node": "IF - Là Spam?",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "IF - Là Spam?": {
-      "main": [
-        [
-          {
-            "node": "Supabase - Đóng vé Spam",
-            "type": "main",
-            "index": 0
-          }
-        ],
-        [
-          {
-            "node": "IF - Thiếu thông tin?",
+            "node": "Switch1",
             "type": "main",
             "index": 0
           }
@@ -926,24 +1081,6 @@
         [
           {
             "node": "Respond - Đã lọc Spam",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "IF - Thiếu thông tin?": {
-      "main": [
-        [
-          {
-            "node": "Supabase - Đánh dấu chờ bổ sung",
-            "type": "main",
-            "index": 0
-          }
-        ],
-        [
-          {
-            "node": "AI Agent - Sinh câu trả lời (RAG)",
             "type": "main",
             "index": 0
           }
@@ -1005,7 +1142,7 @@
       "main": [
         [
           {
-            "node": "Send Response Zalo1",
+            "node": "Gửi kết quả trả lời zalo",
             "type": "main",
             "index": 0
           }
@@ -1016,7 +1153,7 @@
       "main": [
         [
           {
-            "node": "Respond - Đã chuyển nhân sự",
+            "node": "Thông báo đợi phản hồi qua zalo",
             "type": "main",
             "index": 0
           }
@@ -1129,17 +1266,6 @@
         ]
       ]
     },
-    "Send Response Zalo1": {
-      "main": [
-        [
-          {
-            "node": "Respond - Trả lời tự động",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "Respond - Yêu cầu bổ sung thông tin": {
       "main": [
         []
@@ -1199,15 +1325,80 @@
           }
         ]
       ]
+    },
+    "Thông báo đợi phản hồi qua zalo": {
+      "main": [
+        [
+          {
+            "node": "Respond - Đã chuyển nhân sự",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Gửi kết quả trả lời zalo": {
+      "main": [
+        [
+          {
+            "node": "Respond - Trả lời tự động",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch1": {
+      "main": [
+        [
+          {
+            "node": "Supabase - Đóng vé Spam",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Supabase - Đóng trùng lặp",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Supabase - Đánh dấu chờ bổ sung",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "AI Agent - Sinh câu trả lời (RAG)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Supabase - Đóng trùng lặp": {
+      "main": [
+        [
+          {
+            "node": "Respond - Đã lọc trùng lặp",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
-  "active": false,
+  "active": true,
   "settings": {
     "executionOrder": "v1",
     "binaryMode": "separate",
     "availableInMCP": false
   },
-  "versionId": "f8fd02e4-ac63-4577-bf5b-3e85ffd9cd91",
+  "versionId": "af2c6ecc-3e03-41e8-9582-f40fb3c3e68f",
   "meta": {
     "templateCredsSetupCompleted": true,
     "instanceId": "3bcd7fd6b33c3f14aebe749ee4e92a2d5cf7366afb7ca3ff80c2b91173fc7a7c"
