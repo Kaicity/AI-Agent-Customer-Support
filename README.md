@@ -25,7 +25,7 @@ flowchart LR
     end
 
     subgraph N8N[n8n Core Agent]
-        Intake[Support Intake]
+        Intake[Webhook]
         Classify[Phân loại & Ưu tiên]
         RAG[RAG Answer Agent]
         Decision{Confidence >= 0.75?}
