@@ -82,85 +82,100 @@ export default function StatusLookup() {
   }
 
   return (
-    <div className="w-full max-w-lg">
-      <form onSubmit={handleSubmit} className="space-y-3 mb-6">
-        <div>
-          <label className="block text-sm text-ink-700 mb-1">Mã yêu cầu (Ticket ID)</label>
-          <input
-            required
-            value={ticketId}
-            onChange={(e) => setTicketId(e.target.value)}
-            placeholder="VD: 3f1b2c4a-..."
-            className="w-full rounded-lg border border-ink-700/20 bg-white px-3 py-2 text-sm font-mono focus:outline-none focus:ring-2 focus:ring-signal-500"
-          />
-        </div>
-        <div>
-          <label className="block text-sm text-ink-700 mb-1">Email hoặc số điện thoại đã dùng</label>
-          <input
-            required
-            value={contact}
-            onChange={(e) => setContact(e.target.value)}
-            placeholder="ban@email.com"
-            className="w-full rounded-lg border border-ink-700/20 bg-white px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-signal-500"
-          />
-        </div>
-        <button
-          type="submit"
-          disabled={loading}
-          className="w-full rounded-lg bg-ink-900 text-white py-2.5 text-sm font-medium hover:bg-ink-800 transition disabled:opacity-50"
-        >
-          {loading ? "Đang tra cứu..." : "Tra cứu"}
-        </button>
-      </form>
+    <div className="w-full max-w-xl space-y-6">
+      <div className="bg-white rounded-2xl border border-ink-700/10 p-6 shadow-sm">
+        <form onSubmit={handleSubmit} className="space-y-4">
+          <div>
+            <label className="block text-xs font-medium text-ink-700 mb-1">
+              Mã yêu cầu (Ticket ID) <span className="text-flare-600">*</span>
+            </label>
+            <input
+              required
+              value={ticketId}
+              onChange={(e) => setTicketId(e.target.value)}
+              placeholder="VD: 3f1b2c4a-..."
+              className="w-full rounded-xl border border-ink-700/20 bg-white px-3.5 py-2 text-sm font-mono focus:outline-none focus:ring-2 focus:ring-signal-500"
+            />
+          </div>
+          <div>
+            <label className="block text-xs font-medium text-ink-700 mb-1">
+              Email hoặc số điện thoại đã dùng <span className="text-flare-600">*</span>
+            </label>
+            <input
+              required
+              value={contact}
+              onChange={(e) => setContact(e.target.value)}
+              placeholder="VD: ban@email.com hoặc 09..."
+              className="w-full rounded-xl border border-ink-700/20 bg-white px-3.5 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-signal-500"
+            />
+          </div>
+          <button
+            type="submit"
+            disabled={loading}
+            className="w-full rounded-xl bg-ink-950 text-white py-2.5 text-sm font-medium hover:bg-ink-800 transition disabled:opacity-50 shadow-xs"
+          >
+            {loading ? "Đang tra cứu..." : "Tra cứu ngay"}
+          </button>
+        </form>
+      </div>
 
       {error && (
-        <div className="rounded-lg border border-flare-500/20 bg-flare-500/5 p-4 text-sm text-flare-600">
+        <div className="rounded-2xl border border-flare-500/20 bg-flare-500/5 p-4 text-sm text-flare-600">
           {error}
         </div>
       )}
 
       {data && (
-        <div>
-          <div className="flex items-center justify-between mb-4">
-            <StatusBadge status={data.ticket.status} />
+        <div className="bg-white rounded-2xl border border-ink-700/10 p-6 shadow-sm space-y-4">
+          <div className="flex items-center justify-between pb-3 border-b border-ink-700/10">
+            <div className="flex items-center gap-2">
+              <StatusBadge status={data.ticket.status} />
+              <span className="text-xs text-ink-700/60 font-mono">
+                ID: {data.ticket.id.slice(0, 8)}...
+              </span>
+            </div>
             <span className="text-xs text-ink-700/50 font-mono">
               Cập nhật: {new Date(data.ticket.updated_at).toLocaleString("vi-VN")}
             </span>
           </div>
 
-          <div className="space-y-3">
+          <div className="space-y-3 pt-2">
             {data.messages.map((m, i) => (
               <div
                 key={i}
-                className={`rounded-xl p-4 text-sm max-w-[85%] ${
+                className={`rounded-2xl p-4 text-sm max-w-[88%] ${
                   m.direction === "inbound"
-                    ? "bg-white border border-ink-700/10"
+                    ? "bg-paper border border-ink-700/10 text-ink-950"
                     : "bg-ink-950 text-white ml-auto"
                 }`}
               >
                 <div
-                  className={`text-xs font-mono mb-1 ${
-                    m.direction === "inbound" ? "text-ink-700/50" : "text-white/50"
+                  className={`text-[11px] font-mono mb-1 ${
+                    m.direction === "inbound" ? "text-ink-700/60" : "text-white/60"
                   }`}
                 >
                   {m.direction === "inbound" ? "Bạn" : m.sent_by || "Nhân viên hỗ trợ"} ·{" "}
                   {new Date(m.created_at).toLocaleString("vi-VN")}
                 </div>
-                {m.content}
+                <p className="whitespace-pre-wrap leading-relaxed">{m.content}</p>
               </div>
             ))}
             {data.messages.length === 0 && (
-              <p className="text-sm text-ink-700/50">
+              <p className="text-sm text-ink-700/50 text-center py-6">
                 Yêu cầu đã được ghi nhận, chưa có tin nhắn nào trong hội thoại.
               </p>
             )}
           </div>
 
-          <p className="text-xs text-ink-700/40 mt-4">
-            Trang này tự làm mới mỗi vài giây — giữ tab mở để thấy phản hồi mới ngay khi có.
-          </p>
+          <div className="pt-2 border-t border-ink-700/10 flex items-center justify-between text-xs text-ink-700/50 font-mono">
+            <span className="flex items-center gap-1.5">
+              <span className="h-2 w-2 rounded-full bg-signal-500 animate-ping" />
+              Tự động làm mới sau mỗi 8s
+            </span>
+          </div>
         </div>
       )}
     </div>
   );
 }
+
